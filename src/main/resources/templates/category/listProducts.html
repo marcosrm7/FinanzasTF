@@ -159,6 +159,7 @@
 								<th scope="col">Cantidad</th>
 								<th scope="col">Precio</th>
 								<th scope="col">Categoría</th>
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -168,11 +169,16 @@
 								<td th:text="${p.quantityProduct}"></td>
 								<td th:text="${p.priceProduct}"></td>
 								<td th:text="${p.category.nameCategory}"></td>
+								<td><a
+									th:href="@{'/categories/products/delete/'+${p.idProduct}}"><i
+										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
+									th:href="@{'/categories/products/irupdate/'+${p.idProduct}}"><i
+										class="iconf fa fa-pen" style="color: blue"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
-
-					<p th:text="${mensaje2}" class="form-text text-danger"></p>
+					<p th:text="${mensajeVerde}" class="form-text text-success"></p>
+					<p th:text="${mensajeRojo}" class="form-text text-danger"></p>
 
 				</div>
 				<!-- /.container-fluid -->

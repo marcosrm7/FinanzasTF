@@ -2,6 +2,7 @@ package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,18 @@ public class CategoryServiceImpl implements Serializable, ICategoryService {
 	public List<Category> list() {
 		// TODO Auto-generated method stub
 		return cR.findAll();
+	}
+
+	@Override
+	public void delete(int idCategory) {
+		// TODO Auto-generated method stub
+		cR.deleteById(idCategory);
+	}
+
+	@Override
+	public Optional<Category> searchId(int idCategory) {
+		// TODO Auto-generated method stub
+		return cR.findById(idCategory);
 	}
 
 }

@@ -2,6 +2,7 @@ package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,18 @@ public class ProductServiceImpl implements IProductService, Serializable {
 	@Override
 	public List<Product> list() {
 		return pR.findAll();
+	}
+
+	@Override
+	public void delete(int idProduct) {
+		// TODO Auto-generated method stub
+		pR.deleteById(idProduct);
+	}
+
+	@Override
+	public Optional<Product> searchId(int idProduct) {
+		// TODO Auto-generated method stub
+		return pR.findById(idProduct);
 	}
 
 }

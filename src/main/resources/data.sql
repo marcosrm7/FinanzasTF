@@ -13,6 +13,7 @@ INSERT INTO categories (name_category) VALUES ('Audifonos');
 INSERT INTO categories (name_category) VALUES ('TVs');
 INSERT INTO categories (name_category) VALUES ('Laptops');
 INSERT INTO categories (name_category) VALUES ('Monitores');
+INSERT INTO categories (name_category) VALUES ('Mouses');
 
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Silla DXT Carbon', 800.00, 500000, 1);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Silla AKRacing Nitro Negra', 900.00, 450000, 2);
