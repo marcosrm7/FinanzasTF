@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Bank</title>
-    <link rel="shortcut icon"  href="/finanzas/images/icono2.png">
-
-
+<link rel="shortcut icon" href="/finanzas/images/icono2.png">
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -28,13 +26,12 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
+		<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/panel}">
+				th:href="@{/categories/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-credit-card"></i>
 				</div>
@@ -48,12 +45,13 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-target="#collapseTwo" aria-expanded="false"
-				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
+				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Menú</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{#}">item1</a>
+						<a class="collapse-item active" th:href="@{/categories/list}">Categorías
+							y Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item2</a>
@@ -138,34 +136,57 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+					<ul class="nav nav-tabs">
+						<li class="nav-item"><a th:href="@{/categories/list}"
+							class="nav-link active">Categorías</a></li>
+						<li class="nav-item"><a
+							th:href="@{/categories/products/list}" class="nav-link">Productos</a></li>
+					</ul>
+
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Prueba</h1>
+					<h1 class="h3 mb-4 text-gray-800">Categorías</h1>
+
+					<a th:href="@{/categories/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
-				
-					
-				<p th:text="${mensaje2}" class="form-text text-danger"></p>
 
-			</div>
-			<!-- /.container-fluid -->
-       
-		</div>
-		<!-- End of Main Content -->
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Categoría</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cate: ${listCategories}">
+								<td th:text="${cate.idCategory}"></td>
+								<td th:text="${cate.nameCategory}"></td>
+							</tr>
+						</tbody>
+					</table>
 
-		<!-- Footer -->
-		<footer class="sticky-footer bg-white">
-			<div class="container my-auto">
-				<div class="copyright text-center my-auto">
-					<span>Copyright &copy; Web 2020</span>
+					<p th:text="${mensaje2}" class="form-text text-danger"></p>
+
 				</div>
+				<!-- /.container-fluid -->
+
 			</div>
-		</footer>
-		<!-- End of Footer -->
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Web 2020</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
 		</div>
-	
-	<!-- End of Content Wrapper -->
+
+		<!-- End of Content Wrapper -->
 	</div>
-	
+
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
@@ -194,7 +215,7 @@
 							onclick="document.getElementById('logoutForm').submit();"
 							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
-							th:href="@{/panel}">Cancel</button>
+							th:href="@{/category/listCategories}">Cancel</button>
 					</form>
 				</div>
 			</div>

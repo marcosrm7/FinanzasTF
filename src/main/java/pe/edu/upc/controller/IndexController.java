@@ -13,9 +13,9 @@ public class IndexController {
 			return "index";
 		}
 		
-		@GetMapping("/panel")	
+		@GetMapping("/category")	
 		public String panel() {
-			return "panel/panel";
+			return "category/listCategories";
 		}
 	
 	
