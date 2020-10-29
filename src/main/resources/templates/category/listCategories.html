@@ -50,11 +50,10 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/categories/list}">Categorías
-							y Productos</a>
+							<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item2</a>
+								<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item3</a>
@@ -137,10 +136,11 @@
 				<div class="container-fluid">
 
 					<ul class="nav nav-tabs">
+						<li class="nav-item"><a
+							th:href="@{/products/list}" class="nav-link">Productos</a></li>
 						<li class="nav-item"><a th:href="@{/categories/list}"
 							class="nav-link active">Categorías</a></li>
-						<li class="nav-item"><a
-							th:href="@{/categories/products/list}" class="nav-link">Productos</a></li>
+					
 					</ul>
 
 					<!-- Page Heading -->

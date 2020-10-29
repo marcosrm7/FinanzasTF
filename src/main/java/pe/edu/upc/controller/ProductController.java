@@ -18,7 +18,7 @@ import pe.edu.upc.serviceinterface.ICategoryService;
 import pe.edu.upc.serviceinterface.IProductService;
 
 @Controller
-@RequestMapping("categories/products")
+@RequestMapping("/products")
 public class ProductController {
 	@Autowired
 	private IProductService pS;
@@ -41,7 +41,7 @@ public class ProductController {
 			pS.insert(product);
 			model.addAttribute("listCategories", cS.list());
 			model.addAttribute("listProducts", pS.list());
-			return "redirect:/categories/products/list";
+			return "redirect:/products/list";
 		}
 	}
 
@@ -76,7 +76,7 @@ public class ProductController {
 		Optional<Product> objPro = pS.searchId(id);
 		if (objPro == null) {
 			objRedir.addFlashAttribute("mensajeRojo", "Ocurrió un error");
-			return "redirect:/categories/products/list";
+			return "redirect:/products/list";
 		} else {
 			model.addAttribute("listProducts", pS.list());
 			model.addAttribute("listCategories", cS.list());

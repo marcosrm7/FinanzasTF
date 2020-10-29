@@ -22,3 +22,18 @@ INSERT INTO products (name_product, price_product, quantity_product, id_category
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Sony N10', 750.00, 50000, 5);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('ASUS TUF GAMING', 3500.00, 4000, 6);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('MSI LED', 1250.00, 500, 7);
+
+
+INSERT INTO interest (name_interest) VALUES ('Simple');
+INSERT INTO interest (name_interest) VALUES ('Compuesto');
+INSERT INTO interest (name_interest) VALUES ('Efectivo');
+
+INSERT INTO rate (name_rate,days_rate) VALUES ('Semanal',7);
+INSERT INTO rate (name_rate,days_rate) VALUES ('Quincenal',15);
+INSERT INTO rate (name_rate,days_rate) VALUES ('Mensual',30);
+INSERT INTO rate (name_rate,days_rate) VALUES ('Anual',360);
+
+INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Diaria',1);
+INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Bimestral',60);
+INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Trimestral',90);
+INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Anual',360);

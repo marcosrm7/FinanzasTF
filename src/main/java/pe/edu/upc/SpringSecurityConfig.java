@@ -30,7 +30,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authenticated().and().formLogin()
 				.loginPage("/login")
 				.permitAll()
-				.defaultSuccessUrl("/categories/list")
+				.defaultSuccessUrl("/products/list")
 				.and().logout().permitAll().and()
 				.exceptionHandling().accessDeniedPage("/error");
 	}

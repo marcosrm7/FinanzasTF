@@ -52,8 +52,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/categories/list}">Categorías
-							y Productos</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item2</a>
@@ -152,9 +151,9 @@
 					<form th:action="@{/categories/save}" th:object="${category}"
 						method="post">
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Código:</label>
+							<!--  <label for="name" class="col-sm-2 col-form-label">Código:</label>-->
 							<div class="col-sm-6">
-								<input type="text" th:field="*{idCategory}" class="form-control"
+								<input type="hidden" th:field="*{idCategory}" class="form-control"
 									readonly th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('idCategory')}"

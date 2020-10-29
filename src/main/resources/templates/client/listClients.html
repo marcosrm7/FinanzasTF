@@ -50,10 +50,10 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
+						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item3</a>
@@ -137,16 +137,16 @@
 
 					<ul class="nav nav-tabs">
 					<li class="nav-item"><a
-							th:href="@{/products/list}" class="nav-link active">Productos</a></li>
-						<li class="nav-item"><a th:href="@{/categories/list}"
-							class="nav-link">Categorías</a></li>
+							th:href="@{#}" class="nav-link active">Clientes</a></li>
+						<li class="nav-item"><a th:href="@{#}"
+							class="nav-link">item2</a></li>
 						
 					</ul>
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Productos</h1>
+					<h1 class="h3 mb-4 text-gray-800">Clientes</h1>
 
-					<a th:href="@{/products/new}"
+					<a th:href="@{/clients/new}"
 						class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
@@ -155,25 +155,34 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
-								<th scope="col">Producto</th>
-								<th scope="col">Cantidad</th>
-								<th scope="col">Precio</th>
-								<th scope="col">Categoría</th>
-								<th scope="col">Operación</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Celular</th>
+								<th scope="col">%Tasa</th>
+								<th scope="col">Interes</th>
+								<th scope="col">Tipo</th>
+								<th scope="col">Credito</th>
+								<th scope="col">Prd. Capitalización</th>
+								<th scope="col">Deuda</th>
+								<th scope="col">Total Compras</th>
+								<th scope="col">Operaciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="p: ${listProducts}">
-								<td th:text="${p.idProduct}"></td>
-								<td th:text="${p.nameProduct}"></td>
-								<td th:text="${p.quantityProduct}"></td>
-								<td th:text="${p.priceProduct}"></td>
-								<td th:text="${p.category.nameCategory}"></td>
-								<td><a
-									th:href="@{'/products/delete/'+${p.idProduct}}"><i
-										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
-									th:href="@{'/products/irupdate/'+${p.idProduct}}"><i
-										class="iconf fa fa-pen" style="color: blue"></i></a></td>
+							<tr th:each="p: ${listClients}">
+								<td th:text="${p.idClient}"></td>
+								<td th:text="${p.nameClient}"></td>
+								<td th:text="${p.numberClient}"></td>
+								<td th:text="${p.rateClient}"></td>
+								<td th:text="${p.interest.nameInterest}"></td>
+								<td th:text="${p.rate.nameRate}"></td>
+								<td th:text="${p.creditClient}"></td>
+								<td th:text="${p.capitalization.nameCapitalization}"></td>
+								<td th:text="${p.debtCliente}"></td>
+								<td ></td>
+								<td>
+								  		<a th:href="@{#}"><i class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
+										<a th:href="@{#}"><i class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp;
+										<a th:href="@{#}"><i class="iconf fa fa-trash" style="color: black"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
