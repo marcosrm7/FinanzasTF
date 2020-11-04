@@ -19,9 +19,7 @@
 
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
-
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -33,7 +31,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/products/list}">
+				th:href="@{/purchases/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-credit-card"></i>
 				</div>
@@ -52,10 +50,10 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/purchases/list}">Compras</a>
@@ -138,131 +136,39 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Cliente</h1>
+					<h1 class="h3 mb-4 text-gray-800">Compras</h1>
+
+					<a th:href="@{/purchases/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
-					<div th:object="${client}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
-					</div>
 
-					<form th:action="@{/clients/save}" th:object="${client}"
-						method="post">
-						<div class="form-group row">
-							<!--  <label for="name" class="col-sm-2 col-form-label">Código:</label>-->
-							<div class="col-sm-6">
-								<input type="hidden" th:field="*{idClient}" class="form-control"
-									readonly th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('idClient')}"
-									th:errors="*{idClient}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Nombre:</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{nameClient}" autocomplete="off"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('nameClient')}"
-									th:errors="*{nameClient}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-
-							<label for="name" class="col-sm-2 col-form-label">Celular:</label>
-							<div class="col-sm-6">
-								<input type="number" th:field="*{numberClient}"
-									autocomplete="off" class="form-control"
-									th:errorclass="'form-control alert-danger'" required /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('numberClient')}"
-									th:errors="*{numberClient}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="price" class="col-sm-2 col-form-label">%
-								tasa:</label>
-							<div class="col-sm-6">
-								<input type="number" step="0.01" th:field="*{rateClient}"
-									autocomplete="off" class="form-control"
-									th:errorclass="'form-control alert-danger'" required /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('rateClient')}"
-									th:errors="*{rateClient}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="rate" class="col-sm-2 col-form-label">Tipo de
-								tasa:</label>
-							<div class="col-sm-6">
-								<select class="form-control" th:field="*{rate.idRate}">
-									<option th:each="c: ${listRates}" th:value="${c.idRate}"
-										th:text="${c.nameRate}"
-										th:selected="(${c.idRate} == *{rate.idRate})"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="interst" class="col-sm-2 col-form-label">Interes:</label>
-							<div class="col-sm-6">
-								<select class="form-control" th:field="*{interest.idInterest}">
-									<option th:each="c: ${listInterests}"
-										th:value="${c.idInterest}" th:text="${c.nameInterest}"
-										th:selected="(${c.idInterest} == *{interest.idInterest})"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="price" class="col-sm-2 col-form-label">Credito
-								a asignar:</label>
-							<div class="col-sm-6">
-								<input type="number" step="0.01" th:field="*{creditClient}"
-									autocomplete="off" class="form-control"
-									th:errorclass="'form-control alert-danger'" required /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('creditClient')}"
-									th:errors="*{creditClient}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="apitalization" class="col-sm-2 col-form-label">Capitalización:</label>
-							<div class="col-sm-6">
-								<select class="form-control"
-									th:field="*{capitalization.idCapitalization}">
-									<option th:each="c: ${listCapitalizations}"
-										th:value="${c.idCapitalization}"
-										th:text="${c.nameCapitalization}"
-										th:selected="(${c.idCapitalization} == *{capitalization.idCapitalization})"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<!-- <label for="price" class="col-sm-2 col-form-label">Deuda:</label> -->
-							<div class="col-sm-6">
-								<input type="hidden" th:field="*{debtCliente}"
-									autocomplete="off" class="form-control"
-									th:errorclass="'form-control alert-danger'" required /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('debtCliente')}"
-									th:errors="*{debtCliente}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-sm-6">
-								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/clients/list" class="btn btn-danger">Cancelar</a>
-							</div>
-						</div>
-
-					</form>
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Descripción</th>
+								<th scope="col">Tipo</th>
+								<th scope="col">Cliente</th>
+								<th scope="col">Producto</th>
+								<th scope="col">Operación</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p: ${listPurchases}">
+								<td th:text="${p.idPurchase}"></td>
+								<td th:text="${p.descriptionPurchase}"></td>
+								<td th:text="${p.typePurchase}"></td>
+								<td th:text="${p.client.nameClient}"></td>
+								<td th:text="${p.product.nameProduct}"></td>
+								<td><a th:href="@{'/purchases/delete/'+${p.idPurchase}}"><i
+										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
+									th:href="@{'/purchases/irupdate/'+${p.idPurchase}}"><i
+										class="iconf fa fa-pen" style="color: blue"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
 					<p th:text="${mensajeVerde}" class="form-text text-success"></p>
 					<p th:text="${mensajeRojo}" class="form-text text-danger"></p>
-
-
 
 				</div>
 				<!-- /.container-fluid -->
@@ -279,11 +185,11 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
 		</div>
-		<!-- End of Content Wrapper -->
 
+		<!-- End of Content Wrapper -->
 	</div>
+
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
@@ -312,7 +218,7 @@
 							onclick="document.getElementById('logoutForm').submit();"
 							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
-							th:href="@{/category/product}">Cancel</button>
+							th:href="@{/purchases/list}">Cancel</button>
 					</form>
 				</div>
 			</div>
@@ -322,7 +228,6 @@
 	<!-- Bootstrap core JavaScript-->
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- Core plugin JavaScript-->
 	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -330,5 +235,4 @@
 	<script src="/js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

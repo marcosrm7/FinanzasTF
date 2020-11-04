@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="client")
+@Table (name="clients")
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -46,7 +46,7 @@ public class Client implements Serializable {
 	
 	
 	@Column (name="debtCliente", nullable=false, length=8)
-	private Double debtCliente;
+	private Double debtCliente = (double) 0;
 
 	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 		//@JoinColumn(name = "idPurchase", nullable = false)

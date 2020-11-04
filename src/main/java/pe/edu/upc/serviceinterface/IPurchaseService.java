@@ -6,14 +6,12 @@ import java.util.Optional;
 import pe.edu.upc.entity.Purchase;
 
 public interface IPurchaseService {
-	
-	public void insert (Purchase l);
-	
-	List <Purchase> list();
-	
-	Purchase listarId(int idLoan);
 
-    Optional<Purchase> fetchByLoanIdWithLoanDetailsWithBooks(int idLoan);
-    
-    List<Purchase> listarIdUsuario(int idUsuario);
+	public void insert(Purchase purchase);
+
+	List<Purchase> list();
+
+	public void delete(int idPurchase);
+
+	Optional<Purchase> searchId(int idPurchase);
 }

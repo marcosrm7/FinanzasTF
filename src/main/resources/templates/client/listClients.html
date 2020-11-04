@@ -56,7 +56,7 @@
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item3</a>
+						<a class="collapse-item" th:href="@{/purchases/list}">Compras</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item4</a>
@@ -136,18 +136,16 @@
 				<div class="container-fluid">
 
 					<ul class="nav nav-tabs">
-					<li class="nav-item"><a
-							th:href="@{#}" class="nav-link active">Clientes</a></li>
 						<li class="nav-item"><a th:href="@{#}"
-							class="nav-link">item2</a></li>
-						
+							class="nav-link active">Clientes</a></li>
+						<li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>
+
 					</ul>
 
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 text-gray-800">Clientes</h1>
 
-					<a th:href="@{/clients/new}"
-						class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/clients/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
 
@@ -178,11 +176,13 @@
 								<td th:text="${p.creditClient}"></td>
 								<td th:text="${p.capitalization.nameCapitalization}"></td>
 								<td th:text="${p.debtCliente}"></td>
-								<td ></td>
-								<td>
-								  		<a th:href="@{#}"><i class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
-										<a th:href="@{#}"><i class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp;
-										<a th:href="@{#}"><i class="iconf fa fa-trash" style="color: black"></i></a></td>
+								<td></td>
+								<td><a th:href="@{#}"><i
+										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
+									<a th:href="@{'/clients/irupdate/'+${p.idClient}}"><i
+										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp; <a
+									th:href="@{'/clients/delete/'+${p.idClient}}"><i
+										class="iconf fa fa-trash" style="color: black"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -30,13 +30,11 @@ public class ProductServiceImpl implements IProductService, Serializable {
 
 	@Override
 	public void delete(int idProduct) {
-		// TODO Auto-generated method stub
 		pR.deleteById(idProduct);
 	}
 
 	@Override
 	public Optional<Product> searchId(int idProduct) {
-		// TODO Auto-generated method stub
 		return pR.findById(idProduct);
 	}
 

@@ -17,22 +17,18 @@ public class ClientServiceImpl implements IClientService, Serializable{
 	private IClientRepository pR;
 	@Override
 	public void insert(Client client) {
-		// TODO Auto-generated method stub
 		pR.save(client);
 	}
 	@Override
 	public List<Client> list() {
-		// TODO Auto-generated method stub
 		return pR.findAll();
 	}
 	@Override
 	public void delete(int idclient) {
-		// TODO Auto-generated method stub
 		pR.deleteById(idclient);
 	}
 	@Override
 	public Optional<Client> searchId(int idclient) {
-		// TODO Auto-generated method stub
 		return pR.findById(idclient);
 	}
 

@@ -28,12 +28,28 @@ INSERT INTO interest (name_interest) VALUES ('Simple');
 INSERT INTO interest (name_interest) VALUES ('Compuesto');
 INSERT INTO interest (name_interest) VALUES ('Efectivo');
 
-INSERT INTO rate (name_rate,days_rate) VALUES ('Semanal',7);
-INSERT INTO rate (name_rate,days_rate) VALUES ('Quincenal',15);
-INSERT INTO rate (name_rate,days_rate) VALUES ('Mensual',30);
-INSERT INTO rate (name_rate,days_rate) VALUES ('Anual',360);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Quincenal', 15);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Mensual', 30);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Bimestral', 60);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Trimestral', 90);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Cuatrimestral', 120);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Semestral', 180);
+INSERT INTO rate (name_rate, days_rate) VALUES ('Anual', 360);
 
-INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Diaria',1);
-INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Bimestral',60);
-INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Trimestral',90);
-INSERT INTO capitalization (name_capitalization,days_capitalization) VALUES ('Anual',360);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Diaria', 1);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Semanal', 7);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Quincenal', 15);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Mensual', 30);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Bimestral', 60);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Trimestral', 90);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Cuatrimestral', 120);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Semestral', 180);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Anual', 360);
+
+INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (5000, 0, 'Carmen Loayza', 964884845, 25, 1, 1, 1);
+INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (8000, 0, 'Jose Alonso', 977884845, 7, 1, 1, 1);
+INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (10000, 0, 'Joseph Rueda', 964854245, 5, 1, 1, 1);
+INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4500, 0, 'Yeizon Esteijam', 969984845, 8, 1, 1, 1);
+INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200, 0, 'Marcos Ronceros', 964784845, 10, 1, 1, 1);
+
+
