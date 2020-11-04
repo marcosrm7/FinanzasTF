@@ -1,6 +1,7 @@
 package pe.edu.upc.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "purchases")
@@ -19,6 +24,12 @@ public class Purchase implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPurchase;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "datePurchase", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date datePurchase;
+	
 	@Column(name = "descriptionPurchase", nullable = false, length = 100)
 	private String descriptionPurchase;
 	@Column(name = "typePurchase", nullable = false, length = 40)
@@ -35,9 +46,11 @@ public class Purchase implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Purchase(int idPurchase, String descriptionPurchase, String typePurchase, Client client, Product product) {
+	public Purchase(int idPurchase, Date datePurchase, String descriptionPurchase, String typePurchase, Client client,
+			Product product) {
 		super();
 		this.idPurchase = idPurchase;
+		this.datePurchase = datePurchase;
 		this.descriptionPurchase = descriptionPurchase;
 		this.typePurchase = typePurchase;
 		this.client = client;
@@ -50,6 +63,14 @@ public class Purchase implements Serializable {
 
 	public void setIdPurchase(int idPurchase) {
 		this.idPurchase = idPurchase;
+	}
+
+	public Date getDatePurchase() {
+		return datePurchase;
+	}
+
+	public void setDatePurchase(Date datePurchase) {
+		this.datePurchase = datePurchase;
 	}
 
 	public String getDescriptionPurchase() {
@@ -83,5 +104,6 @@ public class Purchase implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
 
 }

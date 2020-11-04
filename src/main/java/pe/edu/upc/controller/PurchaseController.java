@@ -28,11 +28,14 @@ public class PurchaseController {
 	private IClientService cS;
 	@Autowired
 	private IProductService pS;
-
+	@Autowired
+	private ClientController clienteCont;
+	
 	@GetMapping("/new")
 	public String newPurchase(Model model) {
 		model.addAttribute("purchase", new Purchase());
-		model.addAttribute("listClients", cS.list());
+		model.addAttribute("cliente", clienteCont.objCliente.get());
+		//model.addAttribute("listClients", cS.list());
 		model.addAttribute("listProducts", pS.list());
 		return "purchase/purchase";
 	}
@@ -54,9 +57,11 @@ public class PurchaseController {
 
 	@GetMapping("/list")
 	public String listPurchases(Model model) {
+		model.addAttribute("client", clienteCont.objCliente.get());
+		
 		try {
 			model.addAttribute("purchase", new Purchase());
-			model.addAttribute("listPurchases", purS.list());
+			model.addAttribute("listPurchases", purS.listarComprasPorID(clienteCont.objCliente.get().getIdClient()));
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
@@ -81,6 +86,7 @@ public class PurchaseController {
 	@RequestMapping("/irupdate/{id}")
 	public String irupdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
 		Optional<Purchase> objPro = purS.searchId(id);
+								
 		if (objPro == null) {
 			objRedir.addFlashAttribute("mensajeRojo", "Ocurrió un error");
 			return "redirect:/purchases/list";

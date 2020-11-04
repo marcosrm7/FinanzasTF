@@ -38,4 +38,11 @@ public class PurchaseServiceImpl implements IPurchaseService, Serializable {
 		return purR.findById(idPurchase);
 	}
 
+	@Override
+	public List<Purchase> listarComprasPorID(int idCliente) {
+		// TODO Auto-generated method stub
+		List<Purchase> op = purR.findByUser(idCliente);
+		return op;
+	}
+
 }

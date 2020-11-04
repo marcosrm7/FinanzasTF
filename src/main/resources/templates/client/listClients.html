@@ -55,9 +55,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/purchases/list}">Compras</a>
-					</div>
+				
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item4</a>
 					</div>
@@ -177,7 +175,7 @@
 								<td th:text="${p.capitalization.nameCapitalization}"></td>
 								<td th:text="${p.debtCliente}"></td>
 								<td></td>
-								<td><a th:href="@{#}"><i
+								<td><a th:href="@{'/clients/purchases/'+${p.idClient}}"><i
 										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
 									<a th:href="@{'/clients/irupdate/'+${p.idClient}}"><i
 										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp; <a

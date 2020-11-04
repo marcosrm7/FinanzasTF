@@ -14,4 +14,6 @@ public interface IPurchaseService {
 	public void delete(int idPurchase);
 
 	Optional<Purchase> searchId(int idPurchase);
+	
+	List<Purchase> listarComprasPorID(int idCliente);
 }

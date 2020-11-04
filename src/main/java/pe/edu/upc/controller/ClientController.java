@@ -17,6 +17,7 @@ import pe.edu.upc.entity.Client;
 import pe.edu.upc.serviceinterface.IRateService;
 import pe.edu.upc.serviceinterface.ICapitalizationService;
 import pe.edu.upc.serviceinterface.IInterestService;
+import pe.edu.upc.serviceinterface.IPurchaseService;
 import pe.edu.upc.serviceinterface.IClientService;
 
 @Controller
@@ -31,7 +32,12 @@ public class ClientController {
 
 	@Autowired
 	private IInterestService ii;
-
+	@Autowired
+	public Optional<Client> objCliente;
+	
+	@Autowired
+	private IPurchaseService purS;
+	
 	@GetMapping("/new")
 	public String newClient(Model model) {
 		model.addAttribute("client", new Client());
@@ -100,5 +106,18 @@ public class ClientController {
 			return "client/client";
 		}
 	}
-
+	@RequestMapping("/purchases/{id}")
+	public String purchases(@PathVariable int id, Model model, RedirectAttributes objRedir) {
+		Optional<Client> objPro = pS.searchId(id);
+						objCliente=objPro;
+		if (objPro == null) {
+			objRedir.addFlashAttribute("mensajeRojo", "Ocurrió un error");
+			return "redirect:/clients/list";
+		} else {
+		model.addAttribute("listPurchases", purS.listarComprasPorID(objPro.get().getIdClient()));	
+		model.addAttribute("client", objPro.get());
+		
+		return "purchase/listPurchases";
+		}
+	}
 }

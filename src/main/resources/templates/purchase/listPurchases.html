@@ -50,14 +50,12 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
+						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/purchases/list}">Compras</a>
-					</div>
+			
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{#}">item4</a>
 					</div>
@@ -136,9 +134,11 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Compras</h1>
+					<h1 class="h3 mb-4 text-gray-800">Compras de: <span  th:text="${client.nameClient}"></span></h1>
 
-					<a th:href="@{/purchases/new}" class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/purchases/new}"  class="btn btn-secondary btn-xs">Nuevo</a>
+				   
+				    <!--  <a th:href="@{'/purchases/new'+${client.idClient}}" class="btn btn-secondary btn-xs">Nuevo222</a>-->
 
 					<hr class="sidebar-divider">
 
@@ -146,20 +146,22 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
-								<th scope="col">Descripción</th>
-								<th scope="col">Tipo</th>
-								<th scope="col">Cliente</th>
+								<th scope="col">Fecha</th>
 								<th scope="col">Producto</th>
+								<th scope="col">Tipo</th>
+								<th scope="col">Descripción</th>						
+								<th scope="col">Cliente</th>								
 								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listPurchases}">
-								<td th:text="${p.idPurchase}"></td>
-								<td th:text="${p.descriptionPurchase}"></td>
-								<td th:text="${p.typePurchase}"></td>
-								<td th:text="${p.client.nameClient}"></td>
+								<td th:text="${p.idPurchase}"></td>	
+								<td th:text="${p.datePurchase}"></td>								
 								<td th:text="${p.product.nameProduct}"></td>
+								<td th:text="${p.typePurchase}"></td>
+								<td th:text="${p.descriptionPurchase}"></td>
+								<td th:text="${p.client.nameClient}"></td>								
 								<td><a th:href="@{'/purchases/delete/'+${p.idPurchase}}"><i
 										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
 									th:href="@{'/purchases/irupdate/'+${p.idPurchase}}"><i

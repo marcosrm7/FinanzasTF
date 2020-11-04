@@ -11,7 +11,7 @@
 <meta name="author" content="">
 
 <title>Bank</title>
-<link rel="shortcut icon" href="/libreria/images/icon.ico" />
+<link rel="shortcut icon" href="/finanzas/images/icono2.png">
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
@@ -31,16 +31,16 @@
 
 		<!-- Sidebar -->
 		<ul
-			class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
+			class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/authors/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-book"></i>
+					<i class="fas fa-credit-card"></i>
 				</div>
-				<div class="sidebar-brand-text mx-2">.Bank</div>
+				<div class="sidebar-brand-text mx-2">Finanzas</div>
 			</a>
 
 			<!-- Divider -->
@@ -55,19 +55,17 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/authors/list}">1</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/books/list}">2</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
+					</div>
+			
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{#}">item4</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/loans/list}">3</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/users/list}">4</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{/loans/reports}">5</a>
+						<a class="collapse-item " th:href="@{#}">item5</a>
 					</div>
 				</div></li>
 
