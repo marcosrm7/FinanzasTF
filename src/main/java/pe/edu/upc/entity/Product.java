@@ -42,7 +42,24 @@ public class Product implements Serializable {
 		this.priceProduct = priceProduct;
 		this.category = category;
 	}
+//nuevo
+	public Product(String nameProduct, int quantityProduct, Double priceProduct, Category category) {
+		super();
 
+		this.nameProduct = nameProduct;
+		this.quantityProduct = quantityProduct;
+		this.priceProduct = priceProduct;
+		this.category = category;
+	}//
+	  public boolean sinExistencia() {
+	        return this.quantityProduct <= 0;
+	    }
+	  public void restarExistencia(Double existencia) {
+	        this.quantityProduct -= existencia;
+	    }
+	
+	
+	
 	public int getIdProduct() {
 		return idProduct;
 	}
