@@ -50,18 +50,15 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-							<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
+							<a class="collapse-item active" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
-					</div>
+			
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -135,14 +132,14 @@
 
 					<ul class="nav nav-tabs">
 						<li class="nav-item"><a
-							th:href="@{/products/list}" class="nav-link">Productos</a></li>
+							th:href="@{/products/list}" class="nav-link">PRODUCTOS</a></li>
 						<li class="nav-item"><a th:href="@{/categories/list}"
-							class="nav-link active">Categorías</a></li>
+							class="nav-link active">CATEGORÍAS</a></li>
 					
 					</ul>
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Categorías</h1>
+					<!-- Page Heading 
+					<h1 class="h3 mb-4 text-gray-800">Categorías</h1>-->
 
 					<a th:href="@{/categories/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 

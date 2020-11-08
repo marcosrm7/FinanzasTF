@@ -50,18 +50,15 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
+			<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
+					</div>
 			
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
-					</div>
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -134,12 +131,14 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Compras de: <span>Nombreaqui</span></h1>
+					<h1 class="h3 mb-4 text-gray-800"> <a th:href="@{/clients/list}"><i
+										class="iconf fa fa-arrow-circle-left" style="color: purple"></i></a> Compras de: <span  th:text="${client.nameClient}"></span></h1>
 
 					<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
           			   th:text="${mensaje}"
             		 class="alert">
         			</div>
+        			<hr class="sidebar-divider">
 					<!-- <a th:href="@{/purchases/new}"  class="btn btn-secondary btn-xs">Nuevo</a>-->
 				    <a class="btn btn-success mb-2" th:href="@{/vender/}">Nuevo</a>
 				    <!--  <a th:href="@{'/purchases/new'+${client.idClient}}" class="btn btn-secondary btn-xs">Nuevo222</a>-->

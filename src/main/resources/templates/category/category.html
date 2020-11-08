@@ -52,18 +52,15 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
-					</div>
+		
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -136,7 +133,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Categoría</h1>
+					<h1 class="h3 mb-4 text-gray-800">Agregar nueva categoría</h1>
 
 					<hr class="sidebar-divider">
 					<div th:object="${category}" th:remove="tag">

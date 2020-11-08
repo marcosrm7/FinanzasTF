@@ -44,6 +44,7 @@ public class Client implements Serializable {
 	@JoinColumn(name = "idCapitalization")
 	private Capitalization capitalization;
 	
+	private Double creditoDisponible;
 	
 	@Column (name="debtCliente", nullable=false, length=8)
 	private Double debtCliente = (double) 0;
@@ -62,6 +63,21 @@ public class Client implements Serializable {
 		this.rate = rate;
 		this.interest = interest;
 		this.creditClient = creditClient;
+		this.creditoDisponible=creditClient;
+		this.capitalization = capitalization;
+		this.debtCliente = debtCliente;
+	}
+	public Client( String nameClient, int numberClient, Double rateClient, Rate rate, Interest interest,
+			Double creditClient, Capitalization capitalization, Double debtCliente) {
+		super();
+		
+		this.nameClient = nameClient;
+		this.numberClient = numberClient;
+		this.rateClient = rateClient;
+		this.rate = rate;
+		this.interest = interest;
+		this.creditClient = creditClient;
+		this.creditoDisponible=creditClient;
 		this.capitalization = capitalization;
 		this.debtCliente = debtCliente;
 	}
@@ -70,7 +86,23 @@ public class Client implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	//A RESTAR COMPRAS!
+	public boolean sinCredito() {
+		return this.creditoDisponible<=0;
+	}
+	public void restarCredito(Double compra) {
+		 this.creditClient -= compra;
+	}
+	
 
+	public Double getCreditoDisponible() {
+		return creditoDisponible;
+	}
+
+	public void setCreditoDisponible(Double creditoDisponible) {
+		this.creditoDisponible = creditoDisponible;
+	}
 	public int getIdClient() {
 		return idClient;
 	}

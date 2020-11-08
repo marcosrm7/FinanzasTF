@@ -19,9 +19,7 @@
 
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
-
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -52,15 +50,15 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-			<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item active" th:href="@{/sales/all}">Ventas</a>
 					</div>
-				
+			
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -132,81 +130,62 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-					<!-- Page Heading --> 
-					<h1 class="h3 mb-4 text-gray-800"><a th:href="@{/sales/}"><i
-										class="iconf fa fa-arrow-circle-left" style="color: purple"></i></a> Vender</h1>
+					<!-- Page Heading -->
+					<ul class="nav nav-tabs">
+						<li class="nav-item"><a th:href="@{#}"
+							class="nav-link active">TODAS LAS VENTAS</a></li>
+						<!--  <li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>-->
 
-					<hr class="sidebar-divider">
-					 <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
-            			 th:text="${mensaje}"
-            			 class="alert">
+					</ul>
+					<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+          			   th:text="${mensaje}"
+            		 class="alert">
         			</div>
- 				<form th:object="${producto}" th:action="@{/vender/agregar}" method="post">
-           		    <div class="form-group">
-               			  <!--<label for="idProduct">Producto: </label>
-               				 <input autofocus autocomplete="off" th:field="*{idProduct}" id="idProduct"
-                  			     placeholder="Escribe el código y presiona Enter"
-                   			    type="text"
-                   			    class="form-control" th:classappend="${#fields.hasErrors('idProduct')} ? 'is-invalid' : ''">
-              			      -->
-              			      <div class="form-group">
-									<table>
-										<tbody>
-									<tr>
-										<td><label for="" class="col-sm-2 col-form-label">Producto:</label></td>
-										<td colspan="3"><select class="form-control" th:field="*{idProduct}">
-												<option th:each="p: ${listProducts}" th:value="${p.idProduct}"
-													th:text="${p.nameProduct}"></option>
-											</select> 	
-										</td>
-										<td><input type="submit" value="Agregar" class="btn btn-secondary"></input></td>
-										
-									</tr>
-								</tbody>
-							</table>
-						</div>
-              			      
-								<div class="invalid-feedback" th:errors="*{idProduct}"></div>
-								
-              			      
-           			</div>
-       		    </form>
-       		    
-       		    <form class="mb-2" th:action="@{/vender/terminar}" method="post">
-          		 	 <button type="submit" class="btn btn-success">Terminar&nbsp;<i class="fa fa-check"></i></button>
-           		  	 <a th:href="@{/vender/limpiar}" class="btn btn-danger">Cancelar venta&nbsp;<i class="fa fa-trash"></i></a>
-                </form>
-                 <h1 th:text="${'Total: ' + total}"></h1>
-				<div class="table-responsive">
-            <table class="table table-bordered">
+        			
+					
+					<hr class="sidebar-divider">
+
+		 <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Id</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
+                	<th>Cliente</th>
+                    <th>Fecha</th>
                     <th>Total</th>
-                    <th>Quitar de lista</th>
+                    <th>Productos</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="producto, iterador : ${session.carrito}">
-                    <td th:text="${producto.nameProduct}"></td>
-                    <td th:text="${producto.idProduct}"></td>
-                    <td th:text="${producto.priceProduct}"></td>
-                   <td th:text="${producto.cantidad}"></td> 
-                    <td th:text="${producto.total}"></td>
+                <tr th:each="venta : ${ventas}">
+                    <td th:text="${venta.client.nameClient}"></td>
+                    <td th:text="${venta.fechaYHora}"></td>
+                    <td th:text="${venta.total}"></td>
                     <td>
-                        <form th:action="@{/vender/quitar/} + ${iterador.index}" method="post">
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                            </button>
-                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Id </th>
+                                <th>Cantidad vendida</th>
+                                <th>Precio</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="producto : ${venta.productos}">
+                                <td th:text="${producto.nameProduct}"></td>
+                                <td th:text="${producto.idProduct}"></td>
+                                <td th:text="${producto.cantidad}"></td>
+                                <td th:text="${producto.priceProduct}"></td>
+                                <td th:text="${producto.total}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </div>
-
+					<p th:text="${mensajeVerde}" class="form-text text-success"></p>
+					<p th:text="${mensajeRojo}" class="form-text text-danger"></p>
 
 				</div>
 				<!-- /.container-fluid -->
@@ -223,11 +202,11 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
 		</div>
-		<!-- End of Content Wrapper -->
 
+		<!-- End of Content Wrapper -->
 	</div>
+
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
@@ -256,7 +235,7 @@
 							onclick="document.getElementById('logoutForm').submit();"
 							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
-							th:href="@{/purchase/purchase}">Cancel</button>
+							th:href="@{/purchases/list}">Cancel</button>
 					</form>
 				</div>
 			</div>
@@ -266,7 +245,6 @@
 	<!-- Bootstrap core JavaScript-->
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- Core plugin JavaScript-->
 	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -274,5 +252,4 @@
 	<script src="/js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

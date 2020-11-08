@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.Client;
+import pe.edu.upc.repository.ISellRepository;
 import pe.edu.upc.serviceinterface.IRateService;
 import pe.edu.upc.serviceinterface.ICapitalizationService;
 import pe.edu.upc.serviceinterface.IInterestService;
@@ -34,6 +35,8 @@ public class ClientController {
 	private IInterestService ii;
 	@Autowired
 	public Optional<Client> objCliente;
+	@Autowired
+	ISellRepository ventasRepository;
 	
 	@Autowired
 	private IPurchaseService purS;
@@ -57,6 +60,7 @@ public class ClientController {
 			model.addAttribute("listInterests", ii.list());
 			return "client/client";
 		} else {
+			client.setCreditoDisponible(client.getCreditClient());
 			pS.insert(client);
 			model.addAttribute("listRates", cS.list());
 			model.addAttribute("listCapitalizations", pp.list());
@@ -120,4 +124,22 @@ public class ClientController {
 		return "purchase/listPurchases";
 		}
 	}
+	
+	@RequestMapping("/sales/{id}")
+	public String Sales(@PathVariable int id, Model model, RedirectAttributes objRedir) {
+		Optional<Client> objPro = pS.searchId(id);
+						objCliente=objPro;
+		if (objPro == null) {
+			objRedir.addFlashAttribute("mensajeRojo", "Ocurrió un error");
+			return "redirect:/clients/list";
+		} else {
+		//model.addAttribute("ventas", ventasRepository.findAll());
+			model.addAttribute("ventas", ventasRepository.findByUser(objPro.get().getIdClient()));
+		    model.addAttribute("client", objPro.get());
+		
+		return "sell/listSales";
+		}
+	}
+	
+	
 }

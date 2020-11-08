@@ -50,18 +50,15 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
+				<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
+					</div>
 				
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
-					</div>
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -132,16 +129,17 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
+			
 					<ul class="nav nav-tabs">
 						<li class="nav-item"><a th:href="@{#}"
-							class="nav-link active">Clientes</a></li>
-						<li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>
+							class="nav-link active">CLIENTES</a></li>
+						<!--  <li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>-->
 
 					</ul>
+				
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Clientes</h1>
+					<!-- Page Heading 
+					<h1 class="h3 mb-4 text-gray-800">Clientes</h1>-->
 
 					<a th:href="@{/clients/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 
@@ -153,11 +151,12 @@
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
 								<th scope="col">Celular</th>
-								<th scope="col">%Tasa</th>
-								<th scope="col">Interes</th>
-								<th scope="col">Tipo</th>
 								<th scope="col">Credito</th>
+								<th scope="col">%</th>
+								<th scope="col">Tasa</th>
+								<th scope="col">Tipo</th>								
 								<th scope="col">Prd. Capitalización</th>
+								<th scope="col">Credito Disponible</th>								
 								<th scope="col">Deuda</th>
 								<th scope="col">Total Compras</th>
 								<th scope="col">Operaciones</th>
@@ -168,15 +167,18 @@
 								<td th:text="${p.idClient}"></td>
 								<td th:text="${p.nameClient}"></td>
 								<td th:text="${p.numberClient}"></td>
+								<td th:text="${p.creditClient}"></td>
 								<td th:text="${p.rateClient}"></td>
 								<td th:text="${p.interest.nameInterest}"></td>
-								<td th:text="${p.rate.nameRate}"></td>
-								<td th:text="${p.creditClient}"></td>
+								<td th:text="${p.rate.nameRate}"></td>							
 								<td th:text="${p.capitalization.nameCapitalization}"></td>
+								<td th:text="${p.creditoDisponible}"></td>
 								<td th:text="${p.debtCliente}"></td>
 								<td></td>
-								<td><a th:href="@{'/clients/purchases/'+${p.idClient}}"><i
+								<td><a th:href="@{'/clients/sales/'+${p.idClient}}"><i
 										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
+								    <!-- <a th:href="@{'/clients/purchases/'+${p.idClient}}"><i
+										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp; -->
 									<a th:href="@{'/clients/irupdate/'+${p.idClient}}"><i
 										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp; <a
 									th:href="@{'/clients/delete/'+${p.idClient}}"><i

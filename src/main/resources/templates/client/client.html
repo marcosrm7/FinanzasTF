@@ -57,13 +57,10 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
-					</div>
+				<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
+					</div>	
+				
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -136,7 +133,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Cliente</h1>
+					<h1 class="h3 mb-4 text-gray-800">Agregar nuevo cliente</h1>
 
 					<hr class="sidebar-divider">
 					<div th:object="${client}" th:remove="tag">

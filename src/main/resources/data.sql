@@ -46,10 +46,10 @@ INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('C
 INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Semestral', 180);
 INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Anual', 360);
 
-INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (5000, 0, 'Carmen Loayza', 964884845, 25, 1, 1, 1);
-INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (8000, 0, 'Jose Alonso', 977884845, 7, 1, 1, 1);
-INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (10000, 0, 'Joseph Rueda', 964854245, 5, 1, 1, 1);
-INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4500, 0, 'Yeizon Esteijam', 969984845, 8, 1, 1, 1);
-INSERT INTO clients (credit_client, debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200, 0, 'Marcos Ronceros', 964784845, 10, 1, 1, 1);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (5000,5000,  0, 'Carmen Loayza', 964884845, 25, 1, 1, 1);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (8000,8000,  0, 'Jose Alonso', 977884845, 7, 1, 1, 1);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (10000,10000,0, 'Joseph Rueda', 964854245, 5, 1, 1, 1);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4500,4500,  0, 'Yeizon Esteijam', 969984845, 8, 1, 1, 1);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200,4200,  0, 'Marcos Ronceros', 964784845, 10, 1, 1, 1);
 
 
