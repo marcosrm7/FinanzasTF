@@ -132,7 +132,7 @@ public class SellController {
             
         }
         
-        //List <Sell> lis = ventasRepository.findByUser(clienteCont.objCliente.get().getIdClient());
+        //List <Sell> lis = ventasRepository.findByUser(clienteCont.objCliente.get().getIdClient());probar
        clo.get().restarCredito(ventasRepository.totalCompras(clienteCont.objCliente.get().getIdClient()));
       
       
