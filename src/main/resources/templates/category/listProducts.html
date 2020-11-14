@@ -50,15 +50,18 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos | Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-				<div class="bg-white py-2 collapse-inner rounded">
+					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
-				
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
+					</div>
+
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -131,18 +134,17 @@
 				<div class="container-fluid">
 
 					<ul class="nav nav-tabs">
-					<li class="nav-item"><a
-							th:href="@{/products/list}" class="nav-link active">PRODUCTOS</a></li>
+						<li class="nav-item"><a th:href="@{/products/list}"
+							class="nav-link active">PRODUCTOS</a></li>
 						<li class="nav-item"><a th:href="@{/categories/list}"
 							class="nav-link">CATEGORÍAS</a></li>
-						
+
 					</ul>
 
 					<!-- Page Heading 
 					<h1 class="h3 mb-4 text-gray-800">Productos</h1>-->
 
-					<a th:href="@{/products/new}"
-						class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/products/new}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
 
@@ -164,8 +166,7 @@
 								<td th:text="${p.quantityProduct}"></td>
 								<td th:text="${p.priceProduct}"></td>
 								<td th:text="${p.category.nameCategory}"></td>
-								<td><a
-									th:href="@{'/products/delete/'+${p.idProduct}}"><i
+								<td><a th:href="@{'/products/delete/'+${p.idProduct}}"><i
 										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
 									th:href="@{'/products/irupdate/'+${p.idProduct}}"><i
 										class="iconf fa fa-pen" style="color: blue"></i></a></td>

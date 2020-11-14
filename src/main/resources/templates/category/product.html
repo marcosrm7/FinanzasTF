@@ -52,7 +52,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos | Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
@@ -60,7 +60,10 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
-			
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
+					</div>
+
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -143,13 +146,14 @@
 						</ul>
 					</div>
 
-					<form th:action="@{/products/save}"
-						th:object="${product}" method="post">
+					<form th:action="@{/products/save}" th:object="${product}"
+						method="post">
 						<div class="form-group row">
 							<!--  <label for="name" class="col-sm-2 col-form-label">Código:</label>-->
 							<div class="col-sm-6">
-								<input type="hidden" th:field="*{idProduct}" class="form-control"
-									readonly th:errorclass="'form-control alert-danger'" /> <small
+								<input type="hidden" th:field="*{idProduct}"
+									class="form-control" readonly
+									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('idProduct')}"
 									th:errors="*{idProduct}"></small>

@@ -50,7 +50,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos | Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
@@ -58,7 +58,10 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/sales/all}">Ventas</a>
 					</div>
-			
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
+					</div>
+
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -137,53 +140,53 @@
 						<!--  <li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>-->
 
 					</ul>
-					<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
-          			   th:text="${mensaje}"
-            		 class="alert">
-        			</div>
-        			
-					
+					<div
+						th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+						th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+					</div>
+
+
 					<hr class="sidebar-divider">
 
-		 <table class="table table-bordered">
-                <thead>
-                <tr>
-                	<th>Cliente</th>
-                    <th>Fecha</th>
-                    <th>Total</th>
-                    <th>Productos</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="venta : ${ventas}">
-                    <td th:text="${venta.client.nameClient}"></td>
-                    <td th:text="${venta.fechaYHora}"></td>
-                    <td th:text="${venta.total}"></td>
-                    <td>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Id </th>
-                                <th>Cantidad vendida</th>
-                                <th>Precio</th>
-                                <th>Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="producto : ${venta.productos}">
-                                <td th:text="${producto.nameProduct}"></td>
-                                <td th:text="${producto.idProduct}"></td>
-                                <td th:text="${producto.cantidad}"></td>
-                                <td th:text="${producto.priceProduct}"></td>
-                                <td th:text="${producto.total}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Cliente</th>
+								<th>Fecha</th>
+								<th>Total</th>
+								<th>Productos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="venta : ${ventas}">
+								<td th:text="${venta.client.nameClient}"></td>
+								<td th:text="${venta.fechaYHora}"></td>
+								<td th:text="${venta.total}"></td>
+								<td>
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Nombre</th>
+												<th>Id</th>
+												<th>Cantidad vendida</th>
+												<th>Precio</th>
+												<th>Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="producto : ${venta.productos}">
+												<td th:text="${producto.nameProduct}"></td>
+												<td th:text="${producto.idProduct}"></td>
+												<td th:text="${producto.cantidad}"></td>
+												<td th:text="${producto.priceProduct}"></td>
+												<td th:text="${producto.total}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					<p th:text="${mensajeVerde}" class="form-text text-success"></p>
 					<p th:text="${mensajeRojo}" class="form-text text-danger"></p>
 

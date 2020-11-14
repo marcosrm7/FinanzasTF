@@ -31,7 +31,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/purchases/list}">
+				th:href="@{/payments/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-credit-card"></i>
 				</div>
@@ -53,15 +53,15 @@
 						<a class="collapse-item" th:href="@{/products/list}">Productos | Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
+				<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
+						<a class="collapse-item active" th:href="@{/payments/list}">Pagos</a>
 					</div>
-
+				
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -133,58 +133,37 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+					
+
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">
-						<a th:href="@{/clients/list}"><i
-							class="iconf fa fa-arrow-circle-left" style="color: purple"></i></a>
-						Compras de: <span th:text="${client.nameClient}"></span>
-					</h1>
+					<h1 class="h3 mb-4 text-gray-800">Pagos</h1>
 
-					<div
-						th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
-						th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
-					</div>
-					<hr class="sidebar-divider">
-					<!-- <a th:href="@{/purchases/new}"  class="btn btn-secondary btn-xs">Nuevo</a>-->
-					<a class="btn btn-success mb-2" th:href="@{/vender/}">Nuevo</a>
-					<!--  <a th:href="@{'/purchases/new'+${client.idClient}}" class="btn btn-secondary btn-xs">Nuevo222</a>-->
+					<a th:href="@{/payments/new}"
+						class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
 
-					<table class="table table-bordered">
-						<thead>
+					<table class="table table-striped">
+						<thead class="thead-dark">
 							<tr>
-								<th>Fecha</th>
-								<th>Total</th>
-								<th>Productos</th>
+								<th scope="col">Id</th>
+								<th scope="col">Cliente</th>
+								<th scope="col">Producto</th>
+								<th scope="col">Pago</th>
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="venta : ${ventas}">
-								<td th:text="${venta.fechaYHora}"></td>
-								<td th:text="${venta.total}"></td>
-								<td>
-									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th>Nombre</th>
-												<th>Id</th>
-												<th>Cantidad vendida</th>
-												<th>Precio</th>
-												<th>Total</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="producto : ${venta.productos}">
-												<td th:text="${producto.nameProduct}"></td>
-												<td th:text="${producto.idProduct}"></td>
-												<td th:text="${producto.cantidad}"></td>
-												<td th:text="${producto.priceProduct}"></td>
-												<td th:text="${producto.total}"></td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
+							<tr th:each="p: ${listPayments}">
+								<td th:text="${p.idPayment}"></td>
+								<td th:text="${p.sell.client.nameClient}"></td>
+								<td th:text="${p.sell.product.nameProduct}"></td>
+								<td th:text="${p.amountPayment}"></td>
+								<td><a
+									th:href="@{'/payments/delete/'+${p.idPayment}}"><i
+										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
+									th:href="@{'/payments/irupdate/'+${p.idPayment}}"><i
+										class="iconf fa fa-pen" style="color: blue"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -239,7 +218,7 @@
 							onclick="document.getElementById('logoutForm').submit();"
 							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
-							th:href="@{/purchases/list}">Cancel</button>
+							th:href="@{/paymentes/list}">Cancel</button>
 					</form>
 				</div>
 			</div>

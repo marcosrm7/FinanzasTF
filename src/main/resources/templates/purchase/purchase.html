@@ -52,17 +52,16 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos | Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
 					</div>
-			
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
+						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
 					</div>
 				</div></li>
 
@@ -160,24 +159,25 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Fecha: </label>
+							<label for="name" class="col-sm-2 col-form-label">Fecha:
+							</label>
 							<div class="col-sm-6">
 								<!--  <input type="date"   th:field="*{datePurchase}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" /> -->
-						  
-						     <input type="date" th:field="*{datePurchase}" name="fecha" class="form-control" 
-									th:errorclass="'form-control alert-danger'" readonly  id="fechaActual" value=""  >							
-									
-									<small
+
+								<input type="date" th:field="*{datePurchase}" name="fecha"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" readonly
+									id="fechaActual" value=""> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('datePurchase')}"
 									th:errors="*{datePurchase}"></small>
 							</div>
 						</div>
-						
-						
-						
+
+
+
 						<div class="form-group row">
 							<label for="product" class="col-sm-2 col-form-label">Producto:</label>
 							<div class="col-sm-6">
@@ -211,15 +211,15 @@
 									th:errors="*{descriptionPurchase}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
 							<label for="client" class="col-sm-2 col-form-label">Cliente:</label>
 							<div class="col-sm-6">
 								<select class="form-control" th:field="*{client}">
-									<option  th:value="${cliente.getIdClient()}"
+									<option th:value="${cliente.getIdClient()}"
 										th:text="${cliente.getNameClient()}"></option>
 								</select>
-								
+
 								<!--  <select class="form-control" th:field="*{client.idClient}">
 									<option th:each="c: ${listClients}" th:value="${c.idClient}"
 										th:text="${c.nameClient}"
@@ -227,7 +227,7 @@
 								</select>-->
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
 							<div class="col-sm-6">
 								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
@@ -238,18 +238,20 @@
 					</form>
 					<p th:text="${mensajeVerde}" class="form-text text-success"></p>
 					<p th:text="${mensajeRojo}" class="form-text text-danger"></p>
-<script>
-window.onload = function(){
-	  var fecha = new Date(); //Fecha actual
-	  var mes = fecha.getMonth()+1; //obteniendo mes
-	  var dia = fecha.getDate(); //obteniendo dia
-	  var ano = fecha.getFullYear(); //obteniendo año
-	  if(dia<10)
-	    dia='0'+dia; //agrega cero si el menor de 10
-	  if(mes<10)
-	    mes='0'+mes //agrega cero si el menor de 10
-	  document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
-	}</script>
+					<script>
+						window.onload = function() {
+							var fecha = new Date(); //Fecha actual
+							var mes = fecha.getMonth() + 1; //obteniendo mes
+							var dia = fecha.getDate(); //obteniendo dia
+							var ano = fecha.getFullYear(); //obteniendo año
+							if (dia < 10)
+								dia = '0' + dia; //agrega cero si el menor de 10
+							if (mes < 10)
+								mes = '0' + mes //agrega cero si el menor de 10
+							document.getElementById('fechaActual').value = ano
+									+ "-" + mes + "-" + dia;
+						}
+					</script>
 
 
 				</div>

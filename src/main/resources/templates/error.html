@@ -30,8 +30,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
+		<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 			<!-- Sidebar - Brand -->
 			<a
@@ -55,17 +54,17 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos|Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos
+							| Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
 					</div>
-			
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{#}">item4</a>
+						<a class="collapse-item" th:href="@{/sales/all}">Ventas</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item " th:href="@{#}">item5</a>
+						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
 					</div>
 				</div></li>
 
@@ -145,8 +144,8 @@
 							<div class="card-body">
 								<h5 class="card-title">Los sentimos , NO tienes permisos
 									para acceder a este recurso.</h5>
-								<a th:href="@{#}" class="btn btn-outline-light"
-									role="button">Ir al inicio</a>
+								<a th:href="@{#}" class="btn btn-outline-light" role="button">Ir
+									al inicio</a>
 
 							</div>
 						</div>
