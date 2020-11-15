@@ -88,11 +88,16 @@ public class Client implements Serializable {
 	}
 	
 	//A RESTAR COMPRAS!
-	public boolean sinCredito() {
-		return this.creditoDisponible<=0;
+	public boolean sinCredito(Double compra) {
+		if(this.creditoDisponible - compra <=0) return false;
+		else return true;
 	}
 	public void restarCredito(Double compra) {
-		 this.creditClient -= compra;
+		
+		 this.creditoDisponible -= compra;
+	}
+	public void aumentarDeuda(Double compra) {
+		this.debtCliente+=compra;
 	}
 	
 

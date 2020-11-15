@@ -1,8 +1,10 @@
 package pe.edu.upc.entity;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,11 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Sell {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String fechaYHora;
 
@@ -23,13 +29,57 @@ public class Sell {
 	@ManyToOne
 	@JoinColumn(name = "idClient")
 	private Client client;
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fechaCompra", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
+	private Date fechaCompra;
+	
+	private Double interes;
+	
     public Sell(Client client) {
         this.fechaYHora = Useful.obtenerFechaYHoraActual();
     	this.client = client;
+    	this.fechaCompra=new Date();
+    	this.interes=(double) 0;
     	
 }
     
+    
+    public void sumarInteres(Double monto) {
+    	this.interes +=monto;
+    }
+
+
+
+
+	public Date getFechaCompra() {
+		return fechaCompra;
+	}
+
+
+
+
+
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+
+
+
+
+
+	public Double getInteres() {
+		return interes;
+	}
+
+
+
+
+
+	public void setInteres(Double interes) {
+		this.interes = interes;
+	}
+
 
 
 

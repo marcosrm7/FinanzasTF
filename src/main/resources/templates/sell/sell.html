@@ -164,7 +164,7 @@
 											<td colspan="3"><select class="form-control"
 												th:field="*{idProduct}">
 													<option th:each="p: ${listProducts}"
-														th:value="${p.idProduct}" th:text="${p.nameProduct}"></option>
+														th:value="${p.idProduct}" th:text="${p.nameProduct +' -  S/' + p.priceProduct}"></option>
 											</select></td>
 											<td><input type="submit" value="Agregar"
 												class="btn btn-secondary"></input></td>
@@ -203,7 +203,11 @@
 							</thead>
 							<tbody>
 								<tr th:each="producto, iterador : ${session.carrito}">
-									<td th:text="${producto.nameProduct}"></td>
+							
+									<td >
+									<span th:text="${producto.nameProduct}"></span>
+									<i  th:if="${producto.idProduct==8}" class="iconf fa fa-motorcycle" style="color: red"></i>
+									</td>
 									<td th:text="${producto.idProduct}"></td>
 									<td th:text="${producto.priceProduct}"></td>
 									<td th:text="${producto.cantidad}"></td>

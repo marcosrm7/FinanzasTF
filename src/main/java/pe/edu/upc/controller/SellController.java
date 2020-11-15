@@ -45,6 +45,7 @@ public class SellController {
 	@Autowired
 	private ClientController clienteCont;
 	
+	public Double totalito;
 	private void limpiarCarrito(HttpServletRequest request) {
 	        this.guardarCarrito(new ArrayList<>(), request);
 	    }
@@ -59,6 +60,7 @@ public class SellController {
 	        ArrayList<ProductToSell> carrito = this.obtenerCarrito(request);
 	        float total = 0;
 	        for (ProductToSell p: carrito) total += p.getTotal();
+	        totalito=(double) total;
 	        model.addAttribute("total", total);
 	        return "sell/sell";
 	    }
@@ -98,31 +100,49 @@ public class SellController {
         // Si no hay carrito o está vacío, regresamos inmediatamente
         if (carrito == null || carrito.size() <= 0) {
             return "redirect:/vender/";
-        }       
-                
-        //validar si se queda sin credito
-        Sell v = ventasRepository.save(new Sell(clienteCont.objCliente.get()));
-       // int i=clienteCont.objCliente.get().getIdClient();
-        //Optional<Sell> venta= ventasRepository.findById(v.getId());
+        } 
+       
+        
+        else{ 
         Optional<Client> clo=clientRepository.findById(clienteCont.objCliente.get().getIdClient());
-    
-    //  Optional<Client> clo = cli.searchId(clienteCont.objCliente.get().getIdClient());
-        //clientRepository.search(clienteCont.objCliente.get().getIdClient());
-                //   clo.get().restarCredito((double) 1000);
         
-       // clientRepository.findById(clienteContobjCliente.get().getIdClient());
+           if(clo.get().sinCredito(totalito)==false) {
+        	   redirectAttrs
+               .addFlashAttribute("mensaje", "El cliente no cuenta con crédito para realizar la compra.")
+               .addFlashAttribute("clase", "warning");
+        	   return "redirect:/vender/";
+        	 
+           }              
+           else { 
+        	   //validar si se queda sin credito
+        	   Sell v = ventasRepository.save(new Sell(clienteCont.objCliente.get()));
+        	   // int i=clienteCont.objCliente.get().getIdClient();
+        	   //Optional<Sell> venta= ventasRepository.findById(v.getId());
+   
         
+        	   //Double ds=ventasRepository.totalCompras(clienteCont.objCliente.get().getIdClient());
+        
+             clo.get().restarCredito(totalito);
+             clo.get().aumentarDeuda(totalito);
+        	//  Optional<Client> clo = cli.searchId(clienteCont.objCliente.get().getIdClient());
+        	//clientRepository.search(clienteCont.objCliente.get().getIdClient());
+               //FUNCIONA
+        	  //clo.get().restarCredito((double) 1000);
+        
+        // clientRepository.findById(clienteContobjCliente.get().getIdClient());
+        	
      // NO FUNKA -> clienteCont.objCliente.get().restarCredito((double) 1000);
         // Recorrer el carrito
-      
+       // float total = 0;
 
         for (ProductToSell ProductToSell : carrito) {
-            // Obtener el producto fresco desde la base de datos 	
+            // Obtener el producto fresco desde la base de datos
+        	
             Product p = productosRepository.findById(ProductToSell.getIdProduct()).orElse(null);
             if (p == null) continue; // Si es nulo o no existe, ignoramos el siguiente código con continue
             // Le restamos existencia
             p.restarExistencia(ProductToSell.getCantidad());
-            
+        //    total += ProductToSell.getTotal();
             // Lo guardamos con la existencia ya restada
             productosRepository.save(p);
             // Creamos un nuevo producto que será el que se guarda junto con la venta
@@ -130,19 +150,15 @@ public class SellController {
             // Y lo guardamos
             productosVendidosRepository.save(productoVendido);
             
-        }
-        
-        //List <Sell> lis = ventasRepository.findByUser(clienteCont.objCliente.get().getIdClient());probar
-       clo.get().restarCredito(ventasRepository.totalCompras(clienteCont.objCliente.get().getIdClient()));
-      
-      
+        }      
         // Al final limpiamos el carrito
         this.limpiarCarrito(request);
         // e indicamos una venta exitosa
         redirectAttrs
                 .addFlashAttribute("mensaje", "Venta realizada correctamente")
                 .addFlashAttribute("clase", "success");
-        return "redirect:/vender/";
+        return "redirect:/vender/";}
+        }
     }
 
    

@@ -156,13 +156,15 @@
 							<tr>
 								<th>Fecha</th>
 								<th>Total</th>
-								<th>Productos</th>
+								<th>Interes</th>
+								<th>Productos</th>								
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="venta : ${ventas}">
 								<td th:text="${venta.fechaYHora}"></td>
 								<td th:text="${venta.total}"></td>
+								<td th:text="${venta.interes}"></td>
 								<td>
 									<table class="table table-bordered">
 										<thead>
