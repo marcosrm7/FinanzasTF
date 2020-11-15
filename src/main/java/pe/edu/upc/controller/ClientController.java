@@ -170,7 +170,7 @@ public class ClientController {
 				}
 			
 				v.sumarInteres(interes);
-				//RESTAR CREDITO_SUMAR DEUDA-> PUEDE CAMBIAR ESTO PROX.
+				//RESTAR CREDITO_SUMAR DEUDA-> No funka
 				objPro.get().aumentarDeuda(interes);
 				objPro.get().restarCredito(interes);
 				
