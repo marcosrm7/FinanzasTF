@@ -24,7 +24,7 @@ public class Payment implements Serializable {
 	@Column(name = "amountPayment", nullable = false, columnDefinition = "Decimal(8,2)")
 	private Double amountPayment;
 	@ManyToOne
-	@JoinColumn(name = "idSell")
+	@JoinColumn(name = "id")
 	private Sell sell;
 
 	public Payment() {

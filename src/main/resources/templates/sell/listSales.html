@@ -164,7 +164,7 @@
 							<tr th:each="venta : ${ventas}">
 								<td th:text="${venta.fechaYHora}"></td>
 								<td th:text="${venta.total}"></td>
-								<td th:text="${venta.interes}"></td>
+								<td th:text="${#numbers.formatDecimal(venta.interes,2,3,'POINT')}"></td>
 								<td>
 									<table class="table table-bordered">
 										<thead>

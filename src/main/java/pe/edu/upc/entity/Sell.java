@@ -1,5 +1,6 @@
 package pe.edu.upc.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,7 +19,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Sell {
+public class Sell implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -44,6 +46,9 @@ public class Sell {
     	
 }
     
+    public void interesCero() {
+    	this.interes=(double) 0;
+    }
     
     public void sumarInteres(Double monto) {
     	this.interes +=monto;

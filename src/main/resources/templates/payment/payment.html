@@ -161,7 +161,7 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Descripción:</label>
+							<label for="descriptionPayment" class="col-sm-2 col-form-label">Descripción:</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{descriptionPayment}"
 									class="form-control"
@@ -173,17 +173,17 @@
 						</div>
 						<div class="form-group row">
 
-							<label for="quantity" class="col-sm-2 col-form-label">Cliente
+							<label for="sell" class="col-sm-2 col-form-label">Cliente
 								venta hecha:</label>
 							<div class="col-sm-6">
-								<select class="form-control" th:field="*{sell.id}">
+								<select class="form-control" th:field="*{sell}">
 									<option th:each="v: ${ventas}" th:value="${v.id}"
-										th:text="${v.client.idClient + ' ' + v.client.nameClient + ' ' + v.fechaYHora}"></option>
+										th:text="${v.client.idClient + '| ' + v.client.nameClient + ' | ' + v.fechaYHora +' | S/ ' + v.total }"></option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="price" class="col-sm-2 col-form-label">Monto
+							<label for="amountPayment" class="col-sm-2 col-form-label">Monto
 								a pagar:</label>
 							<div class="col-sm-6">
 								<input type="number" step="0.01" th:field="*{amountPayment}"

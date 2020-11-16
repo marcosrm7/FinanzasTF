@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.Payment;
@@ -14,6 +15,7 @@ import pe.edu.upc.serviceinterface.IPaymentService;
 public class PaymentServiceImpl implements IPaymentService, Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Autowired
 	private IPaymentRepository payR;
 
 	@Override

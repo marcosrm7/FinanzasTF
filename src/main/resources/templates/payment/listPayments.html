@@ -136,7 +136,12 @@
 					
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Pagos</h1>
+					<ul class="nav nav-tabs">
+						<li class="nav-item"><a th:href="@{#}"
+							class="nav-link active">PAGOS</a></li>
+						<!--  <li class="nav-item"><a th:href="@{#}" class="nav-link">item2</a></li>-->
+
+					</ul>
 
 					<a th:href="@{/payments/new}"
 						class="btn btn-secondary btn-xs">Nuevo</a>
@@ -148,7 +153,10 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Cliente</th>
-								<th scope="col">Producto</th>
+								<th scope="col">Id Compra</th>
+								<th scope="col">Monto Compra</th>
+								<th scope="col">Interes</th>
+								<th scope="col">Total a Pagar</th>
 								<th scope="col">Pago</th>
 								<th scope="col">Operación</th>
 							</tr>
@@ -157,7 +165,10 @@
 							<tr th:each="p: ${listPayments}">
 								<td th:text="${p.idPayment}"></td>
 								<td th:text="${p.sell.client.nameClient}"></td>
-								<td th:text="${p.sell.product.nameProduct}"></td>
+								<td th:text="${p.sell.id}"></td>
+								<td th:text="${p.sell.total}"></td>
+								<td th:text="${#numbers.formatDecimal(p.sell.interes,2,3,'POINT')}"></td>
+								<td th:text="${p.sell.interes + p.sell.total}"></td>
 								<td th:text="${p.amountPayment}"></td>
 								<td><a
 									th:href="@{'/payments/delete/'+${p.idPayment}}"><i

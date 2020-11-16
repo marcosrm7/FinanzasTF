@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.edu.upc.entity.Capitalization;
 import pe.edu.upc.entity.Client;
+import pe.edu.upc.entity.Interest;
 import pe.edu.upc.entity.Sell;
 import pe.edu.upc.repository.ISellRepository;
 import pe.edu.upc.serviceinterface.IRateService;
@@ -43,6 +45,63 @@ public class ClientController {
 	@Autowired
 	private IPurchaseService purS;
 	
+	
+	public void calcularInteres() {
+		
+		for (Client client: pS.list()) {
+			Double	sumaInteresCompras=(double) 0;
+			Double	sumaCompras=(double) 0;
+			//INICIO: PRUEBA PARA OBTENER INTERES.
+			for (Sell v : ventasRepository.findByUser(client.getIdClient())){
+				Double interes=(double) 0;
+				int milisecondsByDay = 86400000;		
+				Date hoy=new Date(System.currentTimeMillis());
+				//DIAS A OBTENER 35 - RESULTADO: OKKKK
+				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);					
+			//INTERES SIMPLE=1
+				if(client.getInterest().getIdInterest()==1) {
+					Double aux=(double) client.getRate().getDaysRate();
+					interes= v.getTotal()*(1+(client.getRateClient()/100)*diasTranscurridos/aux)-v.getTotal();									
+				}
+			//INTERES COMPUESTO O NOMINAL
+				else if (client.getInterest().getIdInterest()==2) {
+					Double aux=(double) client.getCapitalization().getDaysCapitalization();
+					Double aux2=(double) client.getRate().getDaysRate();					
+					Double parte2=Math.pow((1+(client.getRateClient()/100)/(aux2/aux)), diasTranscurridos/aux);					
+					//interes= (double) Math.round(v.getTotal()*parte2-v.getTotal()) ;
+					interes= v.getTotal()*parte2-v.getTotal() ;
+				}
+			//INTERES EFECTIVO
+				else if (client.getInterest().getIdInterest()==3){					
+					Double aux=(double) client.getRate().getDaysRate();
+					Double par= Math.pow(1+(client.getRateClient()/100), diasTranscurridos/aux);
+					interes=v.getTotal()*par-v.getTotal();
+				}
+				
+				sumaCompras+=v.getTotal();
+				sumaInteresCompras +=interes;
+				v.interesCero();
+				v.sumarInteres(interes);
+				ventasRepository.save(v);
+		
+				
+			}
+			//RESTAR CREDITO_SUMAR DEUDA
+			client.setCreditoDisponible(client.getCreditClient());
+			client.setDebtCliente((double) 0);
+			client.aumentarDeuda(sumaCompras);
+			client.restarCredito(sumaCompras);
+			
+			client.aumentarDeuda(sumaInteresCompras);
+			client.restarCredito(sumaInteresCompras);
+			pS.insert(client);
+					
+							
+			//FIN	
+			
+		}
+	}
+	
 	@GetMapping("/new")
 	public String newClient(Model model) {
 		model.addAttribute("client", new Client());
@@ -62,6 +121,10 @@ public class ClientController {
 			model.addAttribute("listInterests", ii.list());
 			return "client/client";
 		} else {
+			if (client.getInterest().getIdInterest()!=2) {
+				Capitalization c = new Capitalization(9, "N. A.",0);
+				client.setCapitalization(c);
+				}
 			client.setCreditoDisponible(client.getCreditClient());
 			pS.insert(client);
 			model.addAttribute("listRates", cS.list());
@@ -75,6 +138,7 @@ public class ClientController {
 	@GetMapping("/list")
 	public String listClients(Model model) {
 		try {
+			calcularInteres();
 			model.addAttribute("client", new Client());
 			model.addAttribute("listClients", pS.list());
 		} catch (Exception e) {
@@ -131,56 +195,54 @@ public class ClientController {
 	public String Sales(@PathVariable int id, Model model, RedirectAttributes objRedir) {
 		Optional<Client> objPro = pS.searchId(id);
 						objCliente=objPro;
-				
+			//Double	sumaPrueba=(double) 0;
 		if (objPro == null) {
 			objRedir.addFlashAttribute("mensajeRojo", "Ocurrió un error");
 			return "redirect:/clients/list";
 		} else {
+			/*
 			//INICIO: PRUEBA PARA OBTENER INTERES.
 			for (Sell v : ventasRepository.findByUser(objPro.get().getIdClient())){
 				Double interes=(double) 0;
 				int milisecondsByDay = 86400000;		
 				Date hoy=new Date(System.currentTimeMillis());
 				//DIAS A OBTENER 35 - RESULTADO: OKKKK
-				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);	
-				
+				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);					
 			//INTERES SIMPLE=1
 				if(objPro.get().getInterest().getIdInterest()==1) {
-					//(objPro.get().getRateClient()/100)/objPro.get().getRate().getDaysRate())
 					Double aux=(double) objPro.get().getRate().getDaysRate();
-					interes= v.getTotal()*(1+(objPro.get().getRateClient()/100)*diasTranscurridos/aux)-v.getTotal();
-									
+					interes= v.getTotal()*(1+(objPro.get().getRateClient()/100)*diasTranscurridos/aux)-v.getTotal();									
 				}
 			//INTERES COMPUESTO O NOMINAL
 				else if (objPro.get().getInterest().getIdInterest()==2) {
 					Double aux=(double) objPro.get().getCapitalization().getDaysCapitalization();
-					Double aux2=(double) objPro.get().getRate().getDaysRate();
-					
-					Double parte2=Math.pow((1+(objPro.get().getRateClient()/100)/(aux2/aux)), diasTranscurridos/aux);
-					
+					Double aux2=(double) objPro.get().getRate().getDaysRate();					
+					Double parte2=Math.pow((1+(objPro.get().getRateClient()/100)/(aux2/aux)), diasTranscurridos/aux);					
 					//interes= (double) Math.round(v.getTotal()*parte2-v.getTotal()) ;
 					interes= v.getTotal()*parte2-v.getTotal() ;
 				}
 			//INTERES EFECTIVO
-				else if (objPro.get().getInterest().getIdInterest()==3){
-					
+				else if (objPro.get().getInterest().getIdInterest()==3){					
 					Double aux=(double) objPro.get().getRate().getDaysRate();
 					Double par= Math.pow(1+(objPro.get().getRateClient()/100), diasTranscurridos/aux);
 					interes=v.getTotal()*par-v.getTotal();
 				}
-			
+				
+				sumaPrueba +=interes;
 				v.sumarInteres(interes);
-				//RESTAR CREDITO_SUMAR DEUDA-> No funka
-				objPro.get().aumentarDeuda(interes);
-				objPro.get().restarCredito(interes);
+				ventasRepository.save(v);
+		
 				
 			}
+			//RESTAR CREDITO_SUMAR DEUDA-> No funka
+			objPro.get().aumentarDeuda(sumaPrueba);
+			objPro.get().restarCredito(sumaPrueba);
 					
 							
 			//FIN	
+			*/
 			
-			
-		//model.addAttribute("ventas", ventasRepository.findAll());
+		    //model.addAttribute("ventas", ventasRepository.findAll());
 			model.addAttribute("ventas", ventasRepository.findByUser(objPro.get().getIdClient()));
 		    model.addAttribute("client", objPro.get());
 		

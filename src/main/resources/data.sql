@@ -26,7 +26,7 @@ INSERT INTO products (name_product, price_product, quantity_product, id_category
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Delivery', 5, 100000, 9);
 
 INSERT INTO interest (name_interest) VALUES ('Simple');
-INSERT INTO interest (name_interest) VALUES ('Compuesto');
+INSERT INTO interest (name_interest) VALUES ('Nominal');
 INSERT INTO interest (name_interest) VALUES ('Efectivo');
 
 
@@ -45,13 +45,21 @@ INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('T
 INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Cuatrimestral', 120);
 INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Semestral', 180);
 INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('Anual', 360);
+INSERT INTO capitalization (name_capitalization, days_capitalization) VALUES ('N. A.', 0);
 
-INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (5000,4100, 900, 'Carmen Loayza', 964884845, 12, 1, 2, 6);
-INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (8000,8000,  0, 'Jose Alonso', 977884845, 7, 6, 2, 2);
-INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (10000,10000,0, 'Joseph Rueda', 964854245, 5, 5, 3, 3);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (5000,4100, 900, 'Carmen Loayza', 964884845, 12, 9, 1, 6);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (8000,4490, 3510, 'Jose Alonso', 977884845, 7, 6, 2, 2);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (10000,9000,1000, 'Joseph Rueda', 964854245, 5,9, 3, 3);
 INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4500,4500,  0, 'Yeizon Esteijam', 969984845, 8, 3, 2, 4);
-INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200,4200,  0, 'Marcos Ronceros', 964784845, 10, 1, 3, 5);
+INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200,4200,  0, 'Marcos Ronceros', 964784845, 10, 9, 3, 5);
 
 INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10','2020-10-10 21:34:18',0,1);
+INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10 18:41:38.984','2020-11-15 18:41:38',0,2);
+INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10 18:42:17.98','2020-11-15 18:42:17',0,3);
+
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Silla AKRacing Nitro Negra',900,2,1);
+INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'ASUS TUF GAMING',3500,6,2);
+INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (2,'Delivery',5,9,2);
+INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Skull Candy V9',250,4,3);
+INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Sony N10',750,5,3);
 

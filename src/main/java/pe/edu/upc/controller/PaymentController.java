@@ -23,7 +23,7 @@ public class PaymentController {
 	@Autowired
 	private IPaymentService payS;
 	@Autowired
-	ISellRepository ventasRepository;
+	private ISellRepository ventasRepository;
 
 	@GetMapping("/new")
 	public String newPayment(Model model) {

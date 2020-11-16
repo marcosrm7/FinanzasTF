@@ -175,8 +175,8 @@
 								<td th:text="${p.interest.nameInterest}"></td>
 								<td th:text="${p.rate.nameRate}"></td>
 								<td th:text="${p.capitalization.nameCapitalization}"></td>
-								<td th:text="${p.creditoDisponible}"></td>
-								<td th:text="${p.debtCliente}"></td>
+								<td th:text="${#numbers.formatDecimal(p.creditoDisponible,2,2,'POINT')}"></td>
+								<td th:text="${#numbers.formatDecimal(p.debtCliente,2,2,'POINT')}"></td>
 								<!--  <td></td>-->
 								<td><a th:href="@{'/clients/sales/'+${p.idClient}}"><i
 										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
