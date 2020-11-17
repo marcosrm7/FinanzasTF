@@ -161,6 +161,17 @@
 							</div>
 						</div>
 						<div class="form-group row">
+
+							<label for="sell" class="col-sm-2 col-form-label">Cliente
+								venta hecha:</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{sell}">
+									<option th:each="v: ${ventas}" th:value="${v.id}"
+										th:text="${v.fechaYHora + ' | S/ ' + #numbers.formatDecimal((v.total+v.interes),2,2,'POINT') + ' |' + v.client.idClient + ' | ' + v.client.nameClient    }"></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
 							<label for="descriptionPayment" class="col-sm-2 col-form-label">Descripción:</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{descriptionPayment}"
@@ -171,22 +182,12 @@
 									th:errors="*{descriptionPayment}"></small>
 							</div>
 						</div>
+						
 						<div class="form-group row">
-
-							<label for="sell" class="col-sm-2 col-form-label">Cliente
-								venta hecha:</label>
+							<!--  <label for="amountPayment" class="col-sm-2 col-form-label">Monto
+								a pagar:</label>-->
 							<div class="col-sm-6">
-								<select class="form-control" th:field="*{sell}">
-									<option th:each="v: ${ventas}" th:value="${v.id}"
-										th:text="${v.client.idClient + '| ' + v.client.nameClient + ' | ' + v.fechaYHora +' | S/ ' + v.total }"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="amountPayment" class="col-sm-2 col-form-label">Monto
-								a pagar:</label>
-							<div class="col-sm-6">
-								<input type="number" step="0.01" th:field="*{amountPayment}"
+								<input type="hidden" step="0.01" th:field="*{amountPayment}"
 									autocomplete="off" class="form-control"
 									th:errorclass="'form-control alert-danger'" required /> <small
 									class="form-text text-danger"
@@ -197,7 +198,7 @@
 
 						<div class="form-group row">
 							<div class="col-sm-6">
-								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
+								<input type="submit" value="Pagar" class="btn btn-secondary"></input>
 								<a href="/payments/list" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>

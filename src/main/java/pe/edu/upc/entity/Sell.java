@@ -35,14 +35,17 @@ public class Sell implements Serializable {
 	@Column(name = "fechaCompra", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Date fechaCompra;
-	
+		
 	private Double interes;
+	
+	private int estadoCompra;
 	
     public Sell(Client client) {
         this.fechaYHora = Useful.obtenerFechaYHoraActual();
     	this.client = client;
     	this.fechaCompra=new Date();
     	this.interes=(double) 0;
+    	this.estadoCompra=0;
     	
 }
     
@@ -54,46 +57,35 @@ public class Sell implements Serializable {
     	this.interes +=monto;
     }
 
-
-
-
 	public Date getFechaCompra() {
 		return fechaCompra;
 	}
-
-
-
-
 
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
 
-
-
-
-
 	public Double getInteres() {
 		return interes;
 	}
 
-
-
-
-
 	public void setInteres(Double interes) {
 		this.interes = interes;
 	}
-
-
-
-
 
 	public Sell() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public int getEstadoCompra() {
+		return estadoCompra;
+	}
+
+	public void setEstadoCompra(int estadoCompra) {
+		this.estadoCompra = estadoCompra;
+	}
 
 	public Client getClient() {
 		return client;

@@ -18,6 +18,7 @@ import pe.edu.upc.entity.Capitalization;
 import pe.edu.upc.entity.Client;
 import pe.edu.upc.entity.Interest;
 import pe.edu.upc.entity.Sell;
+import pe.edu.upc.repository.IClientRepository;
 import pe.edu.upc.repository.ISellRepository;
 import pe.edu.upc.serviceinterface.IRateService;
 import pe.edu.upc.serviceinterface.ICapitalizationService;
@@ -41,7 +42,8 @@ public class ClientController {
 	public Optional<Client> objCliente;
 	@Autowired
 	ISellRepository ventasRepository;
-	
+	@Autowired
+	IClientRepository clientesRepository;
 	@Autowired
 	private IPurchaseService purS;
 	
@@ -57,7 +59,9 @@ public class ClientController {
 				int milisecondsByDay = 86400000;		
 				Date hoy=new Date(System.currentTimeMillis());
 				//DIAS A OBTENER 35 - RESULTADO: OKKKK
-				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);					
+				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);	
+				
+		  if (v.getEstadoCompra()==0) {
 			//INTERES SIMPLE=1
 				if(client.getInterest().getIdInterest()==1) {
 					Double aux=(double) client.getRate().getDaysRate();
@@ -77,12 +81,15 @@ public class ClientController {
 					Double par= Math.pow(1+(client.getRateClient()/100), diasTranscurridos/aux);
 					interes=v.getTotal()*par-v.getTotal();
 				}
-				
+				v.interesCero();
 				sumaCompras+=v.getTotal();
 				sumaInteresCompras +=interes;
-				v.interesCero();
 				v.sumarInteres(interes);
 				ventasRepository.save(v);
+			}
+				
+				
+				
 		
 				
 			}
@@ -140,7 +147,7 @@ public class ClientController {
 		try {
 			calcularInteres();
 			model.addAttribute("client", new Client());
-			model.addAttribute("listClients", pS.list());
+			model.addAttribute("listClients",clientesRepository.findAllByOrderByIdClient());// pS.list());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}

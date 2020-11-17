@@ -1,8 +1,10 @@
 package pe.edu.upc.controller;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,7 @@ public class PaymentController {
 	@GetMapping("/new")
 	public String newPayment(Model model) {
 		model.addAttribute("payment", new Payment());
-		model.addAttribute("ventas", ventasRepository.findAll());
+		model.addAttribute("ventas", ventasRepository.listarValidos());
 		return "payment/payment";
 	}
 
@@ -38,6 +40,11 @@ public class PaymentController {
 			model.addAttribute("ventas", ventasRepository.findAll());
 			return "payment/payment";
 		} else {
+			Date fechaDePago=new Date();			
+			payment.setFechaPago(fechaDePago);
+			payment.setAmountPayment(payment.getSell().getTotal()+payment.getSell().getInteres());
+			
+			payment.getSell().setEstadoCompra(1);
 			payS.insert(payment);
 			model.addAttribute("ventas", ventasRepository.findAll());
 			model.addAttribute("listPayments", payS.list());
@@ -61,6 +68,8 @@ public class PaymentController {
 		try {
 			model.addAttribute("payment", new Payment());
 			if (id > 0) {
+				Optional<Payment> objPro= payS.searchId(id);
+				objPro.get().getSell().setEstadoCompra(0);
 				payS.delete(id);
 			}
 			model.addAttribute("mensajeVerde", "Se eliminó correctamente");

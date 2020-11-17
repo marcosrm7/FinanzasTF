@@ -151,7 +151,8 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
+								<th scope="col">Fecha de Pago</th>
+								<th scope="col">Id</th>								
 								<th scope="col">Cliente</th>
 								<th scope="col">Id Compra</th>
 								<th scope="col">Monto Compra</th>
@@ -163,18 +164,20 @@
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listPayments}">
+							    <td th:text="${p.fechaPago}"></td>
 								<td th:text="${p.idPayment}"></td>
 								<td th:text="${p.sell.client.nameClient}"></td>
 								<td th:text="${p.sell.id}"></td>
-								<td th:text="${p.sell.total}"></td>
-								<td th:text="${#numbers.formatDecimal(p.sell.interes,2,3,'POINT')}"></td>
-								<td th:text="${p.sell.interes + p.sell.total}"></td>
-								<td th:text="${p.amountPayment}"></td>
+								<td th:text="${#numbers.formatDecimal(p.sell.total,2,2,'POINT')}"></td>
+								<td th:text="${#numbers.formatDecimal(p.sell.interes,2,2,'POINT')}"></td>
+								<td th:text="${#numbers.formatDecimal(p.sell.interes + p.sell.total,2,2,'POINT')}"></td>
+								<td th:text="${#numbers.formatDecimal(p.amountPayment,2,2,'POINT')}"></td>
 								<td><a
 									th:href="@{'/payments/delete/'+${p.idPayment}}"><i
-										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
+										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;
+										<!--  <a
 									th:href="@{'/payments/irupdate/'+${p.idPayment}}"><i
-										class="iconf fa fa-pen" style="color: blue"></i></a></td>
+										class="iconf fa fa-pen" style="color: blue"></i></a></td>-->
 							</tr>
 						</tbody>
 					</table>

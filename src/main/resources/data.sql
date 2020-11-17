@@ -53,9 +53,9 @@ INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client
 INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4500,4500,  0, 'Yeizon Esteijam', 969984845, 8, 3, 2, 4);
 INSERT INTO clients (credit_client, credito_disponible,debt_cliente, name_client, number_client, rate_client, id_capitalization, id_interest, id_rate) VALUES (4200,4200,  0, 'Marcos Ronceros', 964784845, 10, 9, 3, 5);
 
-INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10','2020-10-10 21:34:18',0,1);
-INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10 18:41:38.984','2020-11-15 18:41:38',0,2);
-INSERT INTO sell (fecha_compra,fechayhora, interes,id_client) VALUES ('2020-10-10 18:42:17.98','2020-11-15 18:42:17',0,3);
+INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-10','2020-10-10 21:34:18',0,1);
+INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-10 18:41:38.984','2020-10-10 18:41:38',0,2);
+INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-10 18:42:17.98','2020-10-10 18:42:17',0,3);
 
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Silla AKRacing Nitro Negra',900,2,1);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'ASUS TUF GAMING',3500,6,2);
