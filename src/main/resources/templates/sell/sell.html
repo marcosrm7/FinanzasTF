@@ -193,8 +193,8 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>Nombre</th>
 									<th>Id</th>
+									<th>Nombre</th>									
 									<th>Precio</th>
 									<th>Cantidad</th>
 									<th>Total</th>
@@ -203,12 +203,11 @@
 							</thead>
 							<tbody>
 								<tr th:each="producto, iterador : ${session.carrito}">
-							
+									<td th:text="${producto.idProduct}"></td>
 									<td >
 									<span th:text="${producto.nameProduct}"></span>
 									<i  th:if="${producto.idProduct==8}" class="iconf fa fa-motorcycle" style="color: red"></i>
-									</td>
-									<td th:text="${producto.idProduct}"></td>
+									</td>									
 									<td th:text="${producto.priceProduct}"></td>
 									<td th:text="${producto.cantidad}"></td>
 									<td th:text="${producto.total}"></td>

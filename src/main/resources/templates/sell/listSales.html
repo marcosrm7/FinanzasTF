@@ -157,6 +157,7 @@
 								<th>Fecha</th>
 								<th>Total</th>
 								<th>Interes</th>
+								<th>Estado</th>
 								<th>Productos</th>								
 							</tr>
 						</thead>
@@ -164,13 +165,17 @@
 							<tr th:each="venta : ${ventas}">
 								<td th:text="${venta.fechaYHora}"></td>
 								<td th:text="${venta.total}"></td>
-								<td th:text="${#numbers.formatDecimal(venta.interes,2,3,'POINT')}"></td>
+								<td th:text="${#numbers.formatDecimal(venta.interes,2,2,'POINT')}"></td>
+								<td>
+								<span  th:if="${venta.estadoCompra==0}"><i class="fas fa-times"  style="color: red"></i>Deuda</span>
+								<span  th:if="${venta.estadoCompra==1}"><i class="fas fa-check"  style="color: green"></i>Pagado</span>
+								</td>
 								<td>
 									<table class="table table-bordered">
 										<thead>
 											<tr>
-												<th>Nombre</th>
-												<th>Id</th>
+											    <th>Id</th>
+												<th>Nombre</th>												
 												<th>Cantidad vendida</th>
 												<th>Precio</th>
 												<th>Total</th>
@@ -178,8 +183,8 @@
 										</thead>
 										<tbody>
 											<tr th:each="producto : ${venta.productos}">
-												<td th:text="${producto.nameProduct}"></td>
 												<td th:text="${producto.idProduct}"></td>
+												<td th:text="${producto.nameProduct}"></td>												
 												<td th:text="${producto.cantidad}"></td>
 												<td th:text="${producto.priceProduct}"></td>
 												<td th:text="${producto.total}"></td>

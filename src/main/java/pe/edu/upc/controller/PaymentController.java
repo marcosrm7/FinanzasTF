@@ -70,7 +70,9 @@ public class PaymentController {
 			if (id > 0) {
 				Optional<Payment> objPro= payS.searchId(id);
 				objPro.get().getSell().setEstadoCompra(0);
+				//ventasRepository.save(objPro.get().getSell());
 				payS.delete(id);
+				
 			}
 			model.addAttribute("mensajeVerde", "Se eliminó correctamente");
 		} catch (Exception e) {

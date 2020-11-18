@@ -1,6 +1,9 @@
 package pe.edu.upc.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +52,7 @@ public class ClientController {
 	
 	
 	public void calcularInteres() {
-		
+		    
 		for (Client client: pS.list()) {
 			Double	sumaInteresCompras=(double) 0;
 			Double	sumaCompras=(double) 0;
@@ -57,10 +60,14 @@ public class ClientController {
 			for (Sell v : ventasRepository.findByUser(client.getIdClient())){
 				Double interes=(double) 0;
 				int milisecondsByDay = 86400000;		
-				Date hoy=new Date(System.currentTimeMillis());
-				//DIAS A OBTENER 35 - RESULTADO: OKKKK
+				Date hoy=new Date(System.currentTimeMillis());				
+				//INICIO: PARA MODIFICAR FECHA... DOESNT WORKS
+				//String formato = "yyyy-MM-dd HH:mm:ss";
+			    // DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);		
+				//Date hoy= (Date) formateador.parse("2020-11-11 00:00:00.0") ;
+				//FIN.
 				int diasTranscurridos=  (int) ((hoy.getTime()-v.getFechaCompra().getTime())/milisecondsByDay);	
-				
+			
 		  if (v.getEstadoCompra()==0) {
 			//INTERES SIMPLE=1
 				if(client.getInterest().getIdInterest()==1) {
