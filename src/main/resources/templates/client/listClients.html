@@ -50,7 +50,8 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos | Categorías</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos
+							| Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item active" th:href="@{/clients/list}">Clientes</a>
@@ -162,7 +163,7 @@
 								<th scope="col">Credito Disponible</th>
 								<th scope="col">Deuda</th>
 								<!--  <th scope="col">Total Compras</th>-->
-								<th scope="col">Operaciones</th>
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -175,17 +176,19 @@
 								<td th:text="${p.interest.nameInterest}"></td>
 								<td th:text="${p.rate.nameRate}"></td>
 								<td th:text="${p.capitalization.nameCapitalization}"></td>
-								<td th:text="${#numbers.formatDecimal(p.creditoDisponible,2,2,'POINT')}"></td>
-								<td th:text="${#numbers.formatDecimal(p.debtCliente,2,2,'POINT')}"></td>
+								<td
+									th:text="${#numbers.formatDecimal(p.creditoDisponible,2,2,'POINT')}"></td>
+								<td
+									th:text="${#numbers.formatDecimal(p.debtCliente,2,2,'POINT')}"></td>
 								<!--  <td></td>-->
 								<td><a th:href="@{'/clients/sales/'+${p.idClient}}"><i
-										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp;
+										class="iconf fa fa-shopping-cart" style="color: black"></i></a>&nbsp;&nbsp;
 									<!-- <a th:href="@{'/clients/purchases/'+${p.idClient}}"><i
 										class="iconf fa fa-shopping-cart" style="color: red"></i></a>&nbsp;&nbsp; -->
 									<a th:href="@{'/clients/irupdate/'+${p.idClient}}"><i
 										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp; <a
 									th:href="@{'/clients/delete/'+${p.idClient}}"><i
-										class="iconf fa fa-trash" style="color: black"></i></a></td>
+										class="iconf fa fa-trash" style="color: red"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -169,7 +169,7 @@ public class ClientController {
 			}
 			model.addAttribute("mensajeVerde", "Se eliminó correctamente");
 		} catch (Exception e) {
-			model.addAttribute("mensajeRojo", "Ocurrió un error, no se pudo eliminar");
+			model.addAttribute("mensajeRojo", "Ocurrió un error, el cliente seleccionado está registrado en una venta");
 		}
 		model.addAttribute("listClients", pS.list());
 		return "client/listClients";

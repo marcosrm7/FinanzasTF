@@ -50,7 +50,8 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-							<a class="collapse-item active" th:href="@{/products/list}">Productos | Categorías</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos
+							| Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
@@ -61,7 +62,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/payments/list}">Pagos</a>
 					</div>
-			
+
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -134,11 +135,11 @@
 				<div class="container-fluid">
 
 					<ul class="nav nav-tabs">
-						<li class="nav-item"><a
-							th:href="@{/products/list}" class="nav-link">PRODUCTOS</a></li>
+						<li class="nav-item"><a th:href="@{/products/list}"
+							class="nav-link">PRODUCTOS</a></li>
 						<li class="nav-item"><a th:href="@{/categories/list}"
 							class="nav-link active">CATEGORÍAS</a></li>
-					
+
 					</ul>
 
 					<!-- Page Heading 
@@ -161,10 +162,10 @@
 								<td th:text="${cate.idCategory}"></td>
 								<td th:text="${cate.nameCategory}"></td>
 								<td><a
-									th:href="@{'/categories/delete/'+${cate.idCategory}}"><i
-										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
 									th:href="@{'/categories/irupdate/'+${cate.idCategory}}"><i
-										class="iconf fa fa-pen" style="color: blue"></i></a></td>
+										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp;<a
+									th:href="@{'/categories/delete/'+${cate.idCategory}}"><i
+										class="iconf fa fa-trash" style="color: red"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

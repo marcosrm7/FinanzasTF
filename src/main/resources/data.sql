@@ -61,6 +61,7 @@ INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALU
 INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-25','2020-10-25 14:28:33',0,1);
 INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-11-12 15:30:33','2020-11-12 15:30:33',0,3);
 INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-30 12:20:43','2020-11-30 12:20:43',0,2);
+INSERT INTO sell (estado_compra,fecha_compra,fechayhora, interes,id_client) VALUES (0,'2020-10-10 12:20:43','2020-10-10 12:20:43',0,5);
 
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Silla AKRacing Nitro Negra',900,2,1);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'ASUS TUF GAMING',3500,6,2);
@@ -76,6 +77,8 @@ INSERT INTO product_selled (cantidad, name_product, price_product, id_category,s
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (2,'Delivery',5,9,6);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'IPhone 7',1550,3,7);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Skull Candy V9',250,4,7);
+
+INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Skull Candy V9',250,4,8);
 
 
 INSERT INTO payments (amount_payment, description_payment, fecha_pago, id) VALUES (911.40,'Pago completo','2020-11-17 21:08:29.377',1);

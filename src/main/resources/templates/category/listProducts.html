@@ -50,7 +50,8 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item active" th:href="@{/products/list}">Productos | Categorías</a>
+						<a class="collapse-item active" th:href="@{/products/list}">Productos
+							| Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/clients/list}">Clientes</a>
@@ -166,10 +167,10 @@
 								<td th:text="${p.quantityProduct}"></td>
 								<td th:text="${p.priceProduct}"></td>
 								<td th:text="${p.category.nameCategory}"></td>
-								<td><a th:href="@{'/products/delete/'+${p.idProduct}}"><i
-										class="iconf fa fa-trash" style="color: red"></i></a>&nbsp;&nbsp;<a
-									th:href="@{'/products/irupdate/'+${p.idProduct}}"><i
-										class="iconf fa fa-pen" style="color: blue"></i></a></td>
+								<td><a th:href="@{'/products/irupdate/'+${p.idProduct}}"><i
+										class="iconf fa fa-pen" style="color: blue"></i></a>&nbsp;&nbsp; <a
+									th:href="@{'/products/delete/'+${p.idProduct}}"><i
+										class="iconf fa fa-trash" style="color: red"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
