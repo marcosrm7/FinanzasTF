@@ -175,7 +175,7 @@
 							<label for="descriptionPayment" class="col-sm-2 col-form-label">Descripción:</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{descriptionPayment}"
-									class="form-control"
+									title="Descripción del Pago de un Cliente - No es necesario completarlo" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('descriptionPayment')}"
