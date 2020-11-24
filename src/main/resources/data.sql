@@ -15,6 +15,9 @@ INSERT INTO categories (name_category) VALUES ('Laptops');
 INSERT INTO categories (name_category) VALUES ('Monitores');
 INSERT INTO categories (name_category) VALUES ('Mouses');
 INSERT INTO categories (name_category) VALUES ('Servicios');
+INSERT INTO categories (name_category) VALUES ('Lacteos');
+INSERT INTO categories (name_category) VALUES ('Comida chatarra');
+INSERT INTO categories (name_category) VALUES ('Frutas');
 
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('MSI LED', 1250.00, 500, 7);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Silla AKRacing Nitro Negra', 900.00, 450000, 2);
@@ -24,6 +27,12 @@ INSERT INTO products (name_product, price_product, quantity_product, id_category
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('ASUS TUF GAMING', 3500.00, 4000, 6);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('IPhone 7', 1550.00, 100, 3);
 INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Delivery', 5, 100000, 9);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Leche Gloria', 3.20, 1000, 10);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Yogurt Gloria', 3.20, 2000, 10);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Cuates', 1.00, 5000, 11);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Doritos', 1.20, 1000, 11);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Platano', 1.20, 1000, 12);
+INSERT INTO products (name_product, price_product, quantity_product, id_category) VALUES ('Manzana', 1.20, 900, 12);
 
 INSERT INTO interest (name_interest) VALUES ('Simple');
 INSERT INTO interest (name_interest) VALUES ('Nominal');
@@ -77,7 +86,6 @@ INSERT INTO product_selled (cantidad, name_product, price_product, id_category,s
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (2,'Delivery',5,9,6);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'IPhone 7',1550,3,7);
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Skull Candy V9',250,4,7);
-
 INSERT INTO product_selled (cantidad, name_product, price_product, id_category,sell_id) VALUES (1,'Skull Candy V9',250,4,8);
 
 

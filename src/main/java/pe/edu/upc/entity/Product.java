@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "products")
@@ -19,8 +23,11 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProduct;
+	@NotEmpty(message = "El nombre no puede estar vacío")
 	@Column(name = "nameProduct", nullable = false, length = 38)
 	private String nameProduct;
+	@Min(value = 10, message = "La cantidad mínima es 10 productos")
+	@Max(value = 1000000, message = "La cantidad máxima es 1000000 productos")
 	@Column(name = "quantityProduct", nullable = false)
 	private int quantityProduct;
 	@Column(name = "priceProduct", nullable = false, columnDefinition = "Decimal(8,2)")
